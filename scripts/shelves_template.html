@@ -359,9 +359,12 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 .essay .note { font-family: var(--font-type); font-size: .82rem; line-height: 1.55; color: var(--ink-soft); border-left: 2px solid #c2473a; padding-left: 12px; }
 .essay[hidden] { display: none; }
 /* collection visuals */
-.essay .mosaic { position: relative; height: 210px; margin: 6px 0 10px; overflow: hidden; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start;
+.essay p a.wk { color: inherit; text-decoration: underline; text-decoration-color: rgba(201,168,106,.45); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.essay p a.wk:hover { color: #f1ead9; text-decoration-color: #c9a86a; }
+
+.essay .mosaic { position: relative; height: 200px; margin: 6px 0 14px; overflow: hidden; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; align-content: start;
   -webkit-mask-image: linear-gradient(#000 35%, transparent); mask-image: linear-gradient(#000 35%, transparent); }
-.essay .mosaic img { height: 100px; border-radius: 1px; box-shadow: 0 2px 6px rgba(0,0,0,.5); opacity: .85; }
+.essay .mosaic img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 1px; box-shadow: 0 2px 6px rgba(0,0,0,.5); opacity: .85; }
 .essay .cvrow { display: flex; gap: 10px; overflow-x: auto; padding: 8px 2px 14px; margin: .2em 0 1.2em; scrollbar-width: thin; }
 .essay .cv-i { flex: none; width: 64px; cursor: pointer; text-align: left; background: none; border: 0; padding: 0; color: inherit; font: inherit; }
 .essay .cv-i img { display: block; height: 96px; max-width: 72px; object-fit: cover; border-radius: 1px 3px 3px 1px;
@@ -369,23 +372,22 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 .essay .cv-i:hover img, .essay .cv-i:focus-visible img { transform: translateY(-4px) rotate(-1.5deg); }
 .essay .cv-i span { display: block; font-family: var(--font-type); font-size: .62rem; line-height: 1.25; color: var(--ink-soft); margin-top: 5px;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.essay .gonc, .essay .mosaic, .essay .cvrow, .essay .authcards { width: min(880px, calc(100vw - 48px)); }
-.essay .gonc { margin: 1em 0 1.4em; padding: 18px 18px 8px; background: linear-gradient(#2a2420, #1f1b18); border: 1px solid #3b332b; border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 10px 30px rgba(0,0,0,.35); }
+.essay .gonc { margin: 1em 0 1.4em; padding: 14px 14px 6px; background: linear-gradient(#2a2420, #1f1b18); border: 1px solid #3b332b; border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 10px 30px rgba(0,0,0,.35); }
 .essay .gonc .seal { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .essay .gonc .seal b { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #d9564a, #8e2a21);
   color: #f6e7d0; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; box-shadow: 0 0 0 3px #2a2420, 0 0 0 4px #b8913f; }
 .essay .gonc .seal div { font-family: var(--font-display); font-variant: small-caps; letter-spacing: .06em; color: #e9cf9f; font-size: 1.15rem; line-height: 1.2; }
 .essay .gonc .seal small { display: block; font-family: var(--font-type); font-variant: normal; letter-spacing: 0; font-size: .72rem; color: var(--ink-soft); }
-.essay .gonc .dec { display: grid; grid-template-columns: 46px 1fr; gap: 10px; align-items: start; border-top: 1px solid #3b332b; padding: 10px 0; }
-.essay .gonc .dec > i { font-style: normal; font-family: var(--font-type); font-size: .75rem; color: #c9a86a; padding-top: 38px; }
-.essay .gonc .yrs { display: flex; flex-wrap: wrap; gap: 6px; }
-.essay .gonc .cv-i { width: 54px; }
-.essay .gonc .cv-i img { height: 82px; max-width: 54px; width: 54px; }
-.essay .gonc .cv-i span { font-size: .66rem; color: #c9a86a; text-align: center; -webkit-line-clamp: 1; }
-.essay .authcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin: .4em 0 1.4em; }
+.essay .gonc .dec { display: grid; grid-template-columns: 40px 1fr; gap: 8px; align-items: start; border-top: 1px solid #3b332b; padding: 10px 0; }
+.essay .gonc .dec > i { font-style: normal; font-family: var(--font-type); font-size: .7rem; color: #c9a86a; align-self: center; padding-bottom: 14px; }
+.essay .gonc .yrs { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 5px; }
+.essay .gonc .cv-i { width: auto; min-width: 0; }
+.essay .gonc .cv-i img { width: 100%; max-width: none; height: auto; aspect-ratio: 2 / 3; }
+.essay .gonc .cv-i span { font-size: .6rem; color: #c9a86a; text-align: center; -webkit-line-clamp: 1; }
+.essay .authcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; margin: .4em 0 1.4em; }
 .essay .ac { background: #221e1a; border: 1px solid #3b332b; border-radius: 4px; padding: 14px 14px 12px; }
-.essay .ac .fan { position: relative; height: 104px; margin-bottom: 10px; }
-.essay .ac .fan img { position: absolute; bottom: 0; height: 92px; border-radius: 1px 3px 3px 1px; box-shadow: 0 4px 10px rgba(0,0,0,.55); transform-origin: 50% 100%; cursor: pointer; transition: transform .18s; }
+.essay .ac .fan { position: relative; height: 104px; overflow: hidden; margin-bottom: 10px; }
+.essay .ac .fan img { position: absolute; bottom: 4px; height: 88px; border-radius: 1px 3px 3px 1px; box-shadow: 0 4px 10px rgba(0,0,0,.55); transform-origin: 50% 100%; cursor: pointer; transition: transform .18s; }
 .essay .ac .fan img:hover { z-index: 5; }
 .essay .gonc .seal a, .essay .ac .nm { color: inherit; text-decoration: none; } .essay .gonc .seal a:hover, .essay .ac .nm:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .essay .ac .nm { display: block; font-family: var(--font-display); font-size: 1.1rem; color: #f1ead9; line-height: 1.2; }
@@ -1313,17 +1315,61 @@ addEventListener("hashchange", route);
     const g = BOOKS.filter(b => b.c === "Bookcase 2" && b.o === "Left column" && b.s === 3).sort((x, y) => x.i - y.i);
     const fr = ess.lang === "fr";
     const dec = {};
-    g.forEach(b => { const y = 1974 + b.i; (dec[Math.floor(y / 10) * 10] ||= []).push([y, b]); });
-    ess.querySelector(".gonc").innerHTML = `<div class="seal"><b>G</b><div><a href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${fr ? "Prix_Goncourt" : "Prix_Goncourt"}" target="_blank" rel="noopener">${fr ? "Prix Goncourt, 1975 à 2013" : "Prix Goncourt, 1975 to 2013"}</a></div></div>` +
-      Object.entries(dec).map(([d, l]) => `<div class="dec"><i>${d}s</i><div class="yrs">${l.map(([y, b]) => item(b, y)).join("")}</div></div>`).join("");
+    const pp = BOOKS.find(b => norm(b.a).includes("salvayre") && norm(b.t).includes("pas pleurer"));
+    const yb = g.map(b => [1974 + b.i, b]); if (pp) yb.push([2014, pp]);
+    yb.forEach(([y, b]) => { (dec[Math.floor(y / 10) * 10] ||= []).push([y, b]); });
+    ess.querySelector(".gonc").innerHTML = `<div class="seal"><b>G</b><div><a href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${fr ? "Prix_Goncourt" : "Prix_Goncourt"}" target="_blank" rel="noopener">${fr ? "Prix Goncourt, 1975 à 2014" : "Prix Goncourt, 1975 to 2014"}</a></div></div>` +
+      Object.entries(dec).map(([d, l]) => `<div class="dec"><i>${d}s</i><div class="yrs">${l.map(([y, b]) => item(b, y).replace('class="cv-i"', `class="cv-i" style="grid-column:${y % 10 + 1}"`)).join("")}</div></div>`).join("");
     ess.querySelectorAll(".cvrow").forEach(r => { r.innerHTML = r.dataset.pick.split(";").map(find).filter(Boolean).map(b => (used.add(b.id), item(b))).join(""); });
     // author cards
     const A = [["Christophe Donner", "donner", 26], ["Lydie Salvayre", "salvayre", 15], ["Louis-Ferdinand Céline", "celine", 14], ["Patrick Rambaud", "rambaud", 12], ["Romain Gary", "gary", 10]];
     ess.querySelector(".authcards").innerHTML = A.map(([nm, k, n]) => {
       const all = BOOKS.filter(b => COVERS[b.id] && norm(b.a).includes(k)); const bs = [...all.filter(b => b.cs !== "title"), ...all.filter(b => b.cs === "title")].slice(0, 5);
-      const fan = bs.map((b, i) => { const m = (bs.length - 1) / 2, r = (i - m) * 7; return `<img src="${COVERS[b.id]}" data-id="${b.id}" alt="${esc(b.t)}" style="left:calc(50% - 28px + ${(i - m) * 26}px);transform:rotate(${r}deg) translateY(${Math.abs(i - m) * 3}px)">`; }).join("");
+      const fan = bs.map((b, i) => { const m = (bs.length - 1) / 2, r = (i - m) * 7; return `<img src="${COVERS[b.id]}" data-id="${b.id}" alt="${esc(b.t)}" style="left:calc(50% - 28px + ${(i - m) * 17}px);transform:rotate(${r * .8}deg) translateY(${Math.abs(i - m) * 3}px)">`; }).join("");
       return `<div class="ac"><div class="fan">${fan}</div><a class="nm" href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${encodeURIComponent(nm.replace(/ /g, "_"))}" target="_blank" rel="noopener">${nm}</a><div class="ct">${n} ${fr ? "livres" : "books"}</div><div class="bar"><i style="width:${n / 26 * 100}%"></i></div></div>`;
     }).join("");
+  });
+
+  // Wikipedia links for the authors and the prize named in the text (first mention in each language)
+  const WK = [
+    ["prix Goncourt", "Prix Goncourt"], ["Goncourt winner", "Prix Goncourt"],
+    ["Beauvoir", "Simone de Beauvoir"], ["Duras", "Marguerite Duras"], ["Queneau", "Raymond Queneau"], ["Perec", "Georges Perec"], ["Modiano", "Patrick Modiano"],
+    ["Christophe Donner", "Christophe Donner"], ["Lydie Salvayre", "Lydie Salvayre"], ["Patrick Rambaud", "Patrick Rambaud"],
+    ["Romain Gary", "Romain Gary"], ["Ajar", "Émile Ajar"], ["Émile Ajar", "Émile Ajar"], ["Lemaitre", "Pierre Lemaitre"], ["Céline", "Louis-Ferdinand Céline"],
+    ["Frédéric Vitoux", "Frédéric Vitoux"], ["Daniel Pennac", "Daniel Pennac"], ["Georges Perec", "Georges Perec"], ["Marguerite Duras", "Marguerite Duras"],
+    ["Simone de Beauvoir", "Simone de Beauvoir"], ["Dominique Fernandez", "Dominique Fernandez"], ["Amélie Nothomb", "Amélie Nothomb"],
+    ["Michel Houellebecq", "Michel Houellebecq"], ["Emmanuel Carrère", "Emmanuel Carrère"], ["Marcel Proust", "Marcel Proust"],
+    ["Albert Cohen", "Albert Cohen"], ["Pierre Assouline", "Pierre Assouline"],
+    ["Balzac", "Honoré de Balzac"], ["Flaubert", "Gustave Flaubert"], ["Zola", "Émile Zola"], ["Chateaubriand", "François-René de Chateaubriand"],
+    ["Rousseau", "Jean-Jacques Rousseau"], ["Montaigne", "Michel de Montaigne"], ["Gide", "André Gide"], ["Camus", "Albert Camus"], ["Sartre", "Jean-Paul Sartre"],
+    ["Dostoïevski", "Fiodor Dostoïevski"], ["Dostoyevsky", "Fyodor Dostoevsky"], ["Joyce", "James Joyce"], ["Musil", "Robert Musil"], ["Zweig", "Stefan Zweig"],
+    ["Borges", "Jorge Luis Borges"], ["Kundera", "Milan Kundera"], ["Mishima", "Yukio Mishima"], ["Malaparte", "Curzio Malaparte"], ["Pasolini", "Pier Paolo Pasolini"],
+    ["Dos Passos", "John Dos Passos"], ["Bernard Pivot", "Bernard Pivot"], ["Pierre Jourde", "Pierre Jourde"], ["Éric Naulleau", "Éric Naulleau"],
+    ["Matthieu Galey", "Matthieu Galey"], ["Pierre Bayard", "Pierre Bayard"], ["Vasari", "Giorgio Vasari"], ["Gombrich", "Ernst Gombrich"],
+    ["Cézanne", "Paul Cézanne"], ["Van Gogh", "Vincent van Gogh"], ["Vermeer", "Johannes Vermeer"], ["Série noire", "Série noire"],
+    ["Jean-Claude Izzo", "Jean-Claude Izzo"], ["Manchette", "Jean-Patrick Manchette"], ["Frédéric Dard", "Frédéric Dard"], ["San-Antonio", "San-Antonio"],
+    ["Hervé Le Corre", "Hervé Le Corre"], ["Fred Vargas", "Fred Vargas"], ["Albert Londres", "Albert Londres"], ["André Suarès", "André Suarès"],
+    ["Pagnol", "Marcel Pagnol"], ["Peter Mayle", "Peter Mayle"], ["Pierre Desproges", "Pierre Desproges"], ["Michel Audiard", "Michel Audiard"],
+    ["Roland Topor", "Roland Topor"], ["Alexandre Vialatte", "Alexandre Vialatte"], ["Jean-Marie Gourio", "Jean-Marie Gourio"],
+    ["Henry de Monfreid", "Henry de Monfreid"], ["Paul Morand", "Paul Morand"], ["Yasmina Reza", "Yasmina Reza"], ["Jaoui", "Agnès Jaoui"],
+    ["Bacri", "Jean-Pierre Bacri"], ["Pinter", "Harold Pinter"]
+  ];
+  const wkUrl = (lang, q) => `https://${lang}.wikipedia.org/w/index.php?title=Special:Search&go=Go&search=${encodeURIComponent(q)}`;
+  essays.forEach(ess => {
+    const done = new Set();
+    for (const [name, q] of WK) {
+      if (done.has(q)) continue;
+      const walker = document.createTreeWalker(ess, NodeFilter.SHOW_TEXT, { acceptNode: n =>
+        n.parentElement.closest("p") && !n.parentElement.closest("a, i, b, h2, .cvrow, .authcards, .gonc") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+      let n;
+      while ((n = walker.nextNode())) {
+        const re = new RegExp(`(^|[^\\p{L}])(${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})(?![\\p{L}])`, "u");
+        const m = re.exec(n.data); if (!m) continue;
+        const start = m.index + m[1].length, mid = n.splitText(start); mid.splitText(name.length);
+        const a = document.createElement("a"); a.className = "wk"; a.href = wkUrl(ess.lang, q); a.target = "_blank"; a.rel = "noopener"; a.textContent = name;
+        mid.replaceWith(a); done.add(q); break;
+      }
+    }
   });
   const col = document.getElementById("v-collection");
   col.addEventListener("click", e => { const x = e.target.closest("[data-id]"); if (x) { tip.hidden = true; locate(x.dataset.id); } });
