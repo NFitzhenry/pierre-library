@@ -358,6 +358,41 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 .essay b { font-weight: 600; color: #f1ead9; }
 .essay .note { font-family: var(--font-type); font-size: .82rem; line-height: 1.55; color: var(--ink-soft); border-left: 2px solid #c2473a; padding-left: 12px; }
 .essay[hidden] { display: none; }
+/* collection visuals */
+.essay .mosaic { position: relative; height: 210px; margin: 6px 0 10px; overflow: hidden; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start;
+  -webkit-mask-image: linear-gradient(#000 35%, transparent); mask-image: linear-gradient(#000 35%, transparent); }
+.essay .mosaic img { height: 100px; border-radius: 1px; box-shadow: 0 2px 6px rgba(0,0,0,.5); opacity: .85; }
+.essay .cvrow { display: flex; gap: 10px; overflow-x: auto; padding: 8px 2px 14px; margin: .2em 0 1.2em; scrollbar-width: thin; }
+.essay .cv-i { flex: none; width: 64px; cursor: pointer; text-align: left; background: none; border: 0; padding: 0; color: inherit; font: inherit; }
+.essay .cv-i img { display: block; height: 96px; max-width: 72px; object-fit: cover; border-radius: 1px 3px 3px 1px;
+  box-shadow: inset 3px 0 4px -2px rgba(0,0,0,.6), 0 3px 8px rgba(0,0,0,.55); transition: transform .18s; }
+.essay .cv-i:hover img, .essay .cv-i:focus-visible img { transform: translateY(-4px) rotate(-1.5deg); }
+.essay .cv-i span { display: block; font-family: var(--font-type); font-size: .62rem; line-height: 1.25; color: var(--ink-soft); margin-top: 5px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.essay .gonc, .essay .mosaic, .essay .cvrow, .essay .authcards { width: min(880px, calc(100vw - 48px)); }
+.essay .gonc { margin: 1em 0 1.4em; padding: 18px 18px 8px; background: linear-gradient(#2a2420, #1f1b18); border: 1px solid #3b332b; border-radius: 4px; box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 10px 30px rgba(0,0,0,.35); }
+.essay .gonc .seal { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.essay .gonc .seal b { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #d9564a, #8e2a21);
+  color: #f6e7d0; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; box-shadow: 0 0 0 3px #2a2420, 0 0 0 4px #b8913f; }
+.essay .gonc .seal div { font-family: var(--font-display); font-variant: small-caps; letter-spacing: .06em; color: #e9cf9f; font-size: 1.15rem; line-height: 1.2; }
+.essay .gonc .seal small { display: block; font-family: var(--font-type); font-variant: normal; letter-spacing: 0; font-size: .72rem; color: var(--ink-soft); }
+.essay .gonc .dec { display: grid; grid-template-columns: 46px 1fr; gap: 10px; align-items: start; border-top: 1px solid #3b332b; padding: 10px 0; }
+.essay .gonc .dec > i { font-style: normal; font-family: var(--font-type); font-size: .75rem; color: #c9a86a; padding-top: 38px; }
+.essay .gonc .yrs { display: flex; flex-wrap: wrap; gap: 6px; }
+.essay .gonc .cv-i { width: 54px; }
+.essay .gonc .cv-i img { height: 82px; max-width: 54px; width: 54px; }
+.essay .gonc .cv-i span { font-size: .66rem; color: #c9a86a; text-align: center; -webkit-line-clamp: 1; }
+.essay .authcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin: .4em 0 1.4em; }
+.essay .ac { background: #221e1a; border: 1px solid #3b332b; border-radius: 4px; padding: 14px 14px 12px; }
+.essay .ac .fan { position: relative; height: 104px; margin-bottom: 10px; }
+.essay .ac .fan img { position: absolute; bottom: 0; height: 92px; border-radius: 1px 3px 3px 1px; box-shadow: 0 4px 10px rgba(0,0,0,.55); transform-origin: 50% 100%; cursor: pointer; transition: transform .18s; }
+.essay .ac .fan img:hover { z-index: 5; }
+.essay .gonc .seal a, .essay .ac .nm { color: inherit; text-decoration: none; } .essay .gonc .seal a:hover, .essay .ac .nm:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.essay .ac .nm { display: block; font-family: var(--font-display); font-size: 1.1rem; color: #f1ead9; line-height: 1.2; }
+.essay .ac .ct { font-family: var(--font-type); font-size: .72rem; color: var(--ink-soft); margin-top: 2px; }
+.essay .ac .bar { height: 4px; background: #3b332b; border-radius: 2px; margin-top: 8px; overflow: hidden; }
+.essay .ac .bar i { display: block; height: 100%; background: #c9a86a; border-radius: 2px; }
+
 @media (prefers-reduced-motion: reduce) { .spine { transition: none; } .spine:hover, .spine.on { transform: none; } }
 </style>
 
@@ -407,47 +442,80 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
   <section id="v-figures" class="view" hidden><div class="figs" id="figs"></div></section>
   <section id="v-collection" class="view" hidden>
 <article class="essay" lang="fr" data-lang-block="fr">
+<div class="mosaic" aria-hidden="true"></div>
 <h2>Ce que contient la bibliothèque</h2>
 <p>La bibliothèque de Pierre est presque entièrement consacrée à la littérature française : 1 034 livres de 573 auteurs. Environ deux cinquièmes sont des livres de poche des grandes collections françaises, surtout Folio (133) et Le Livre de Poche (102), puis Points, Pocket, 10/18 et J'ai lu. L'essentiel du reste est formé d'éditions originales en grand format : Gallimard (104), Grasset (78), le Seuil, Albin Michel, Flammarion et Actes Sud. Pour les 674 livres dont l'édition exacte a été retrouvée au catalogue de la BnF, l'année médiane de publication est 1997 ; presque tous datent de 1970 à 2019, et les années 1990 forment la décennie la plus fournie. Moins de 25 sont antérieurs à 1970. C'est la bibliothèque d'un lecteur, constituée au fil des parutions pendant une quarantaine d'années, et non une collection héritée ou de bibliophile.</p>
 
 <h2>Le prix Goncourt</h2>
-<p>L'étagère la plus parlante est celle du milieu, dans la colonne de gauche de la seconde bibliothèque. Elle réunit le prix Goncourt de chaque année de 1975 à 2013, soit 39 livres rangés dans l'ordre, de <i>La vie devant soi</i> d'Ajar à <i>Au revoir là-haut</i> de Lemaitre. Presque tous sont en première édition grand format, avec une année de publication à la BnF identique à celle du prix : Pierre achetait sans doute chaque lauréat dès sa proclamation, tous les automnes pendant près de quarante ans. La série se poursuit probablement : <i>Pas pleurer</i> de Lydie Salvayre, prix 2014, est rangé avec ses autres livres dans l'autre colonne.</p>
+<p>L'étagère la plus parlante est celle du milieu, dans la colonne de gauche de la seconde bibliothèque. Elle réunit le prix Goncourt de chaque année de 1975 à 2013, soit 39 livres rangés dans l'ordre, de <i>La vie devant soi</i> d'Ajar à <i>Au revoir là-haut</i> de Lemaitre. Presque tous sont en première édition grand format, avec une année de publication à la BnF identique à celle du prix : Pierre achetait sans doute chaque lauréat dès sa proclamation, tous les automnes pendant près de quarante ans. <i>Pas pleurer</i> de Lydie Salvayre, prix 2014, est rangé avec ses autres livres dans l'autre colonne.</p>
 
+<div class="gonc"></div>
 <h2>Le fonds principal</h2>
 <p>La première colonne de la grande bibliothèque compte dix étagères de livres de poche rangés strictement par ordre alphabétique, d'Abiker à Zola. C'est le fonds d'un lecteur cultivé : les classiques français (Balzac, Flaubert, Zola, Chateaubriand, Rousseau, Montaigne), les écrivains français du XX<sup>e</sup> siècle (Gide, Camus, Sartre, Beauvoir, Duras, Queneau, Perec, Modiano) et beaucoup de littérature traduite (Dostoïevski, l'<i>Ulysse</i> de Joyce, Musil, Zweig, Borges, Kundera, Mishima, Malaparte, Pasolini, Dos Passos).</p>
 
+<div class="cvrow" data-pick="Flaubert~Bovary;Zola~Nana;Camus~Étranger;Joyce~Ulysse;Perec~mode;Queneau~Exercices;Duras~barrage;Borges~Fictions;Kundera~Insoutenable;Dosto~joueur;Zweig~Voyage;Malaparte~Kaputt"></div>
 <h2>Les auteurs qu'il suivait</h2>
 <p>Christophe Donner est l'auteur le mieux représenté, avec 26 livres en comptant les dix livres pour enfants publiés sous le nom de Chris Donner. Viennent ensuite Lydie Salvayre, avec 15 livres, soit presque toute son œuvre, et Patrick Rambaud, avec 12, dont <i>La Bataille</i>, son prix Goncourt, et plusieurs de ses chroniques satiriques du quinquennat de Nicolas Sarkozy. Romain Gary compte 10 livres sous son propre nom, sans compter <i>La vie devant soi</i> signé Émile Ajar.</p>
+<div class="authcards"></div>
+<div class=\"authcards\"></div>
 <p>Céline est le classique le plus complètement représenté, avec environ 14 volumes : les romans, de <i>Voyage au bout de la nuit</i> à <i>Nord</i>, les <i>Lettres</i>, un volume des <i>Cahiers Céline</i> et la biographie de Frédéric Vitoux. Cela ressemble à une admiration durable plutôt qu'à une lecture isolée. D'autres auteurs sont présents en nombre : Daniel Pennac, Georges Perec, Pierre Lemaitre, Marguerite Duras, Simone de Beauvoir, Dominique Fernandez, Amélie Nothomb, Michel Houellebecq, Emmanuel Carrère, Marcel Proust, Albert Cohen et Pierre Assouline.</p>
+<div class="cvrow" data-pick="Pennac~ogres;Perec~;Lemaitre~Alex;Duras~Hiroshima;Nothomb~;Houellebecq~particules;Carrère~Adversaire;Fernandez~;Assouline~;Cohen~;Proust~;Beauvoir~"></div>
+
 
 <h2>Au-delà du roman</h2>
 <p><b>Le monde littéraire lui-même.</b> Bernard Pivot ; les pamphlets de Pierre Jourde et Éric Naulleau contre les auteurs à la mode ; le journal de Matthieu Galey sur la vie littéraire parisienne ; <i>Comment parler des livres que l'on n'a pas lus ?</i> de Pierre Bayard ; un dictionnaire des plagiaires ; les dictionnaires Bouquins des œuvres, des auteurs et des personnages ; et plusieurs manuels d'écriture (<i>Le métier d'écrire</i>, <i>Écrire : guide pratique</i>).</p>
+<div class="cvrow" data-pick="Pivot~métier de lire;Jourde~estomac;~Jourde & Naulleau;Bayard~Comment;Delblat~;Verny~"></div>
+
 <p><b>L'art, et en particulier les faux.</b> <i>Faux et faussaires</i>, <i>L'Amour du faux</i>, <i>Autoportrait d'un faussaire</i>, <i>Trois Picasso avant le petit déjeuner</i> et <i>Le musée disparu</i>, à côté de Vasari, de Gombrich, des correspondances de Cézanne et de Van Gogh, et de deux romans sur Vermeer, ce qui s'accorde avec la reproduction posée sur la bibliothèque.</p>
+<div class="cvrow" data-pick="~Trois Picasso;~musée disparu;Van Gogh~;Gombrich~"></div>
+
 <p><b>Le roman policier.</b> Une étagère de Série noire, la trilogie marseillaise de Jean-Claude Izzo, Manchette, Frédéric Dard et San-Antonio, les polars de Pierre Lemaitre, Hervé Le Corre et Fred Vargas.</p>
+<div class="cvrow" data-pick="Izzo~Total;Izzo~Chourmo;Izzo~Solea;Manchette~;Dard~séquestrées;Vargas~;Lemaitre~Cadres"></div>
+
 <p><b>Marseille et la Provence.</b> Izzo encore, <i>Marseille, porte du Sud</i> d'Albert Londres, <i>Marsiho</i> d'André Suarès, un ancien livret imprimé sur les rues de Marseille, <i>25 histoires de Marseille</i>, Pagnol et Peter Mayle.</p>
+<div class="cvrow" data-pick="Pagnol~;Mayle~année;Mayle~Provence;Mayle~Pastis"></div>
+
 <p><b>L'humour, le voyage et le théâtre.</b> Pierre Desproges (quatre livres), Michel Audiard, Roland Topor, Alexandre Vialatte et Jean-Marie Gourio ; Albert Londres, Henry de Monfreid, Paul Morand et des guides de Venise, Rome, Amsterdam et Paris ; des textes de L'Avant-Scène Théâtre, Yasmina Reza, Jaoui et Bacri, et Pinter.</p>
+<div class="cvrow" data-pick="Desproges~Vivons;Desproges~Chroniques;Audiard~;Topor~Mémoires;Vialatte~;Gourio~;Morand~Venises;Reza~Art;Pinter~"></div>
+
 
 </article>
 <article class="essay" lang="en" data-lang-block="en">
+<div class="mosaic" aria-hidden="true"></div>
 <h2>What the collection is</h2>
 <p>Pierre's library is almost entirely French literature: 1,034 books by 573 authors. About two-fifths are paperbacks in the main French series, chiefly Folio (133), Le Livre de Poche (102), Points, Pocket, 10/18 and J'ai lu. Most of the rest are the publishers' first editions in grand format: Gallimard (104), Grasset (78), Seuil, Albin Michel, Flammarion and Actes Sud. For the 674 books whose exact edition was identified in the BnF catalogue, the median year of publication is 1997, and almost all date from 1970 to 2019, the 1990s being the largest decade. Fewer than 25 predate 1970. It is a working reader's library, bought as the books came out over some forty years, rather than an inherited or antiquarian collection.</p>
 
 <h2>The prix Goncourt</h2>
-<p>The most telling shelf is the middle one on the left column of the second bookcase. It holds the Goncourt winner of every year from 1975 to 2013, 39 books in order, from Ajar's <i>La vie devant soi</i> to Lemaitre's <i>Au revoir là-haut</i>. Almost all are the first grand-format edition, with the BnF publication year matching the year of the prize, which suggests he bought each winner when it was announced, every autumn for nearly forty years. The run probably continues: Lydie Salvayre's <i>Pas pleurer</i>, the 2014 winner, is shelved with her other books on the other column.</p>
+<p>The most telling shelf is the middle one on the left column of the second bookcase. It holds the Goncourt winner of every year from 1975 to 2013, 39 books in order, from Ajar's <i>La vie devant soi</i> to Lemaitre's <i>Au revoir là-haut</i>. Almost all are the first grand-format edition, with the BnF publication year matching the year of the prize, which suggests he bought each winner when it was announced, every autumn for nearly forty years. Lydie Salvayre's <i>Pas pleurer</i>, the 2014 winner, is shelved with her other books on the other column.</p>
 
+<div class="gonc"></div>
 <h2>The core library</h2>
 <p>The first column of the main bookcase is ten shelves of paperbacks in strict alphabetical order, from Abiker to Zola. It is a general reader's canon: the French classics (Balzac, Flaubert, Zola, Chateaubriand, Rousseau, Montaigne); the twentieth-century French writers (Gide, Camus, Sartre, Beauvoir, Duras, Queneau, Perec, Modiano); and a good deal of translated fiction (Dostoyevsky, Joyce's <i>Ulysses</i>, Musil, Zweig, Borges, Kundera, Mishima, Malaparte, Pasolini, Dos Passos).</p>
 
+<div class="cvrow" data-pick="Flaubert~Bovary;Zola~Nana;Camus~Étranger;Joyce~Ulysse;Perec~mode;Queneau~Exercices;Duras~barrage;Borges~Fictions;Kundera~Insoutenable;Dosto~joueur;Zweig~Voyage;Malaparte~Kaputt"></div>
 <h2>Authors he followed</h2>
 <p>Christophe Donner is the best represented author, with 26 books counting the ten children's books he published as Chris Donner. Lydie Salvayre follows with 15 books, nearly her whole output, and Patrick Rambaud with 12, among them his Goncourt novel <i>La Bataille</i> and several of his satirical chronicles of the Sarkozy presidency. Romain Gary has 10 books under his own name, besides <i>La vie devant soi</i> as Émile Ajar.</p>
+<div class="authcards"></div>
 <p>Céline is the most completely represented classic author, with about 14 items: the novels from <i>Voyage au bout de la nuit</i> to <i>Nord</i>, the <i>Lettres</i>, a volume of the <i>Cahiers Céline</i> and Frédéric Vitoux's biography. That looks like lasting admiration rather than a single reading. Other authors held in depth are Daniel Pennac, Georges Perec, Pierre Lemaitre, Marguerite Duras, Simone de Beauvoir, Dominique Fernandez, Amélie Nothomb, Michel Houellebecq, Emmanuel Carrère, Marcel Proust, Albert Cohen and Pierre Assouline.</p>
+<div class="cvrow" data-pick="Pennac~ogres;Perec~;Lemaitre~Alex;Duras~Hiroshima;Nothomb~;Houellebecq~particules;Carrère~Adversaire;Fernandez~;Assouline~;Cohen~;Proust~;Beauvoir~"></div>
+
 
 <h2>Interests beyond fiction</h2>
 <p><b>The literary world itself.</b> Bernard Pivot; the polemics of Pierre Jourde and Éric Naulleau against fashionable authors; Matthieu Galey's journals of Paris literary life; Pierre Bayard's <i>Comment parler des livres que l'on n'a pas lus ?</i>; a dictionary of plagiarists; the Bouquins dictionaries of works, authors and characters; and several writing manuals (<i>Le métier d'écrire</i>, <i>Écrire : guide pratique</i>).</p>
+<div class="cvrow" data-pick="Pivot~métier de lire;Jourde~estomac;~Jourde & Naulleau;Bayard~Comment;Delblat~;Verny~"></div>
+
 <p><b>Art, and forgery in particular.</b> <i>Faux et faussaires</i>, <i>L'Amour du faux</i>, <i>Autoportrait d'un faussaire</i>, <i>Trois Picasso avant le petit déjeuner</i> and <i>Le musée disparu</i>, alongside Vasari, Gombrich, the letters of Cézanne and Van Gogh, and two novels about Vermeer, which fits the print on top of the bookcase.</p>
+<div class="cvrow" data-pick="~Trois Picasso;~musée disparu;Van Gogh~;Gombrich~"></div>
+
 <p><b>Crime fiction.</b> A shelf of Série noire, Jean-Claude Izzo's Marseille trilogy, Manchette, Frédéric Dard and San-Antonio, Pierre Lemaitre's crime novels, Hervé Le Corre and Fred Vargas.</p>
+<div class="cvrow" data-pick="Izzo~Total;Izzo~Chourmo;Izzo~Solea;Manchette~;Dard~séquestrées;Vargas~;Lemaitre~Cadres"></div>
+
 <p><b>Marseille and Provence.</b> Izzo again, Albert Londres's <i>Marseille, porte du Sud</i>, André Suarès's <i>Marsiho</i>, an old printed booklet on the streets of Marseille, <i>25 histoires de Marseille</i>, Pagnol and Peter Mayle.</p>
+<div class="cvrow" data-pick="Pagnol~;Mayle~année;Mayle~Provence;Mayle~Pastis"></div>
+
 <p><b>Humour, travel and theatre.</b> Pierre Desproges (four books), Michel Audiard, Roland Topor, Alexandre Vialatte and Jean-Marie Gourio; Albert Londres, Henry de Monfreid, Paul Morand and guides to Venice, Rome, Amsterdam and Paris; scripts from L'Avant-Scène Théâtre, Yasmina Reza, Jaoui and Bacri, and Pinter.</p>
+<div class="cvrow" data-pick="Desproges~Vivons;Desproges~Chroniques;Audiard~;Topor~Mémoires;Vialatte~;Gourio~;Morand~Venises;Reza~Art;Pinter~"></div>
+
 
 </article>
   </section>
@@ -950,7 +1018,7 @@ addEventListener("load", () => layout());
 const tip = document.getElementById("tip");
 let pinned = null;
 function show(el, x, y) {
-  if (typeof scaleNow !== "undefined" && scaleNow < 0.9999 && !el.classList.contains("on")) return;
+  if (el.classList.contains("spine") && typeof scaleNow !== "undefined" && scaleNow < 0.9999 && !el.classList.contains("on")) return;
   const b = el._b;
   const flags = [];
   if (toCheck(b)) flags.push(`<span class="flag check">${L("flagCheck")}</span>`);
@@ -966,7 +1034,8 @@ function show(el, x, y) {
     ${b.y || b.pb ? `<div class="meta">${b.ark ? `<a href="https://catalogue.bnf.fr/${b.ark}" target="_blank" rel="noopener">BnF</a> · ` : ""}${esc(b.pb)}${b.y ? ", " + b.y : ""}${b.pg ? " · " + esc(b.pg) : ""}${b.cs === "title" ? ". " + L("otherCover") : ""}</div>` : ""}
     ${flags.join("")}
     ${b.n ? `<div class="n">${esc(b.n)}</div>` : ""}
-    <div class="loc">${L("loc")(b)}</div>`;
+    <div class="loc">${L("loc")(b)}</div>
+    ${b.a ? `<div class="meta"><a href="https://${LANG}.wikipedia.org/w/index.php?search=${encodeURIComponent(b.a.split(/[;,/]| et | and /)[0].trim())}" target="_blank" rel="noopener">Wikipedia</a></div>` : ""}`;
   tip.hidden = false;
   const r = tip.getBoundingClientRect();
   let left = x + 16, top = y + 16;
@@ -1225,6 +1294,48 @@ function route() {
   if (v === "shelves") layout();
 }
 addEventListener("hashchange", route);
+// ---------- Collection visuals: covers drawn from the catalogue ----------
+(function () {
+  const norm = s => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const used = new Set();
+  function find(spec) {
+    const [a, ti] = spec.split("~").map(norm);
+    return BOOKS.find(b => COVERS[b.id] && !used.has(b.id) && norm(b.a).includes(a) && norm(b.t).includes(ti || ""));
+  }
+  const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+  const item = (b, label) => `<button class="cv-i" data-id="${b.id}"><img src="${COVERS[b.id]}" alt="${esc(b.t)}"><span>${esc(label == null ? b.t : label)}</span></button>`;
+  const essays = document.querySelectorAll("#v-collection .essay");
+  essays.forEach(ess => {
+    used.clear();
+    // mosaic: an even sample of covers of the editions on the shelves
+    const pool = BOOKS.filter(b => COVERS[b.id] && b.cs !== "title");
+    const step = Math.max(1, Math.floor(pool.length / 32));
+    ess.querySelector(".mosaic").innerHTML = pool.filter((_, i) => i % step === 0).slice(0, 32).map(b => `<img src="${COVERS[b.id]}" alt="">`).join("");
+    // Goncourt shelf, arranged by decade
+    const g = BOOKS.filter(b => b.c === "Bookcase 2" && b.o === "Left column" && b.s === 3).sort((x, y) => x.i - y.i);
+    const fr = ess.lang === "fr";
+    const dec = {};
+    g.forEach(b => { const y = 1974 + b.i; (dec[Math.floor(y / 10) * 10] ||= []).push([y, b]); });
+    ess.querySelector(".gonc").innerHTML = `<div class="seal"><b>G</b><div><a href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${fr ? "Prix_Goncourt" : "Prix_Goncourt"}" target="_blank" rel="noopener">${fr ? "Prix Goncourt, 1975 à 2013" : "Prix Goncourt, 1975 to 2013"}</a><small>${fr ? "Les 39 lauréats, dans l'ordre où Pierre les a rangés" : "The 39 winners, in the order Pierre shelved them"}</small></div></div>` +
+      Object.entries(dec).map(([d, l]) => `<div class="dec"><i>${d}s</i><div class="yrs">${l.map(([y, b]) => item(b, y)).join("")}</div></div>`).join("");
+    ess.querySelectorAll(".cvrow").forEach(r => { r.innerHTML = r.dataset.pick.split(";").map(find).filter(Boolean).map(b => (used.add(b.id), item(b))).join(""); });
+    // author cards
+    const A = [["Christophe Donner", "donner", 26], ["Lydie Salvayre", "salvayre", 15], ["Louis-Ferdinand Céline", "celine", 14], ["Patrick Rambaud", "rambaud", 12], ["Romain Gary", "gary", 10]];
+    ess.querySelector(".authcards").innerHTML = A.map(([nm, k, n]) => {
+      const all = BOOKS.filter(b => COVERS[b.id] && norm(b.a).includes(k)); const bs = [...all.filter(b => b.cs !== "title"), ...all.filter(b => b.cs === "title")].slice(0, 5);
+      const fan = bs.map((b, i) => { const m = (bs.length - 1) / 2, r = (i - m) * 7; return `<img src="${COVERS[b.id]}" data-id="${b.id}" alt="${esc(b.t)}" style="left:calc(50% - 28px + ${(i - m) * 26}px);transform:rotate(${r}deg) translateY(${Math.abs(i - m) * 3}px)">`; }).join("");
+      return `<div class="ac"><div class="fan">${fan}</div><a class="nm" href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${encodeURIComponent(nm.replace(/ /g, "_"))}" target="_blank" rel="noopener">${nm}</a><div class="ct">${n} ${fr ? "livres" : "books"}</div><div class="bar"><i style="width:${n / 26 * 100}%"></i></div></div>`;
+    }).join("");
+  });
+  const col = document.getElementById("v-collection");
+  col.addEventListener("click", e => { const x = e.target.closest("[data-id]"); if (x) { tip.hidden = true; locate(x.dataset.id); } });
+  const over = e => { const x = e.target.closest("[data-id]"); if (!x) return; x._b = BOOKS[+x.dataset.id]; show(x, e.clientX, e.clientY); };
+  col.addEventListener("mouseover", over); col.addEventListener("mousemove", over);
+  col.addEventListener("mouseout", e => { if (e.target.closest("[data-id]")) tip.hidden = true; });
+  col.addEventListener("focusin", e => { const x = e.target.closest("[data-id]"); if (x) { x._b = BOOKS[+x.dataset.id]; const r = x.getBoundingClientRect(); show(x, r.right, r.top); } });
+  col.addEventListener("focusout", () => { tip.hidden = true; });
+})();
+
 q.addEventListener("input", () => { if (location.hash === "#list") renderList(); });
 route();
 </script>
