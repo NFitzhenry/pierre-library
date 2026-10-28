@@ -1,0 +1,10 @@
+Shelf 1: 53 books
+  First three: La Première gorgée de sperme (Fellacia Dessert) | Deux étés (Erik Orsenna) | [untitled] (Christine de Rivoyre)
+  Last three: 2084 (Boualem Sansal) | Mémoire de fille (Annie Ernaux) | Le cas Malaussène 1. Ils m'ont menti (Daniel Pennac)
+  Note: tops cut off by frame
+Shelf 2: 40 books
+  First three: [untitled] (Christophe Donner) | La disparition de Jim Sullivan (Tanguy Viel) | Infiniment petit (Patrick Chatelier)
+  Last three: Règne animal (Jean-Baptiste Del Amo) | Bohèmes (Dan Franck) | Regardez-nous danser (Leïla Slimani)
+Shelf 3: 34 books
+  First three: Les hauts lieux de la littérature en France | Le métier d'écrire (Jean-Luc Delblat) | Cézanne, Zola... (Sophie Monneret)
+  Last three: Rembrandt 1606-1669 (Pierre Descargues) | Alma Mahler ou l'art d'être aimée (Françoise Giroud) | Lettres à son frère Théo (Van Gogh)

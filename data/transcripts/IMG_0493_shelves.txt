@@ -1,0 +1,6 @@
+Shelf 1: 35 books
+  first: Zizi the Kid | Mort aux cons | Money, money
+  last: Cabinet portrait | La vie est belle | Les Braban
+Shelf 2: 36 books
+  first: Le dîner de filles | [illegible] | Le Désespéré
+  last: Casse-pipe | L'or | La Patience de l'araignée

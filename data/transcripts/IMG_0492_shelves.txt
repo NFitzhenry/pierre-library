@@ -1,0 +1,15 @@
+Shelf 1: 36 books
+  first: Zizi the Kid | Mort aux cons | Money, money
+  last: La vie est belle | Les Braban | Les petits maux d'amour
+Shelf 2: 38 books
+  first: Le dîner de filles | [illegible] | Le Désespéré
+  last: La Patience de l'araignée | Les Vitamines du bonheur | Alcools
+Shelf 3: 30 books
+  first: Un mec sympa | Le siffleur | Mémoires d'outre-tombe 1
+  last: Bang ! Bang ! | Maudit manège | Paroles pour adolescents
+Shelf R1: 4 books
+  first: [illegible] | L'homme de l'art | Albert Londres
+  last: L'homme de l'art | Albert Londres | Grâces lui soient rendues
+Shelf R2: 6 books
+  first: Ticket d'entrée | L'invention de la pauvreté | Le silence des hommes
+  last: Il m'aimait | Le traducteur | Les assoiffées

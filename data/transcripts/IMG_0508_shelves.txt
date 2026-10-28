@@ -1,0 +1,7 @@
+Shelf 1: 27 books
+  first: Mémoire de fille (Annie Ernaux); Le cas Malaussène 1. Ils m'ont menti (Daniel Pennac); Nos amis les journalistes (François Reynaert)
+  last: Cinq psychanalyses (Sigmund Freud); La folie (Jean Thuillier); Italies (Yves Hersant)
+  note: same shelf as IMG_0507 shelf 2
+Shelf 2: 29 books
+  first: Le lecteur (Pascal Quignard); Le Professeur Frœppel (Jean Tardieu); Chut ! (Jean-Marie Gourio)
+  last: [illegible] (?); [illegible] (?); La Clôture (Jean Rolin)

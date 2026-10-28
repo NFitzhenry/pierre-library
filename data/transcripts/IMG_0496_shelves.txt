@@ -1,0 +1,8 @@
+Shelf 1: 40 books
+  First: Evguénie Sokolov (Serge Gainsbourg); Sphinx (Anne Garréta); Une page d'histoire (Romain Gary)
+  Last: Rhinocéros (Ionesco); La cantatrice chauve / La leçon (Ionesco); Notes et contre-notes (?)
+Shelf 2: 33 books
+  First: Le soleil des mourants (Jean-Claude Izzo); Le Nain Jaune (Pascal Jardin); Histoire d'amour (Régis Jauffret)
+  Last: La maison de papier (Françoise Mallet-Joris); Les enfants sauvages (Lucien Malson); La mort à Venise (Thomas Mann)
+Shelf 0 strip at top (not transcribed) = IMG_0495 shelf 2. Cut-off strip at bottom (not transcribed) = IMG_0497 shelf 2.
+Shelf 2 is the same shelf as IMG_0497 shelf 1.

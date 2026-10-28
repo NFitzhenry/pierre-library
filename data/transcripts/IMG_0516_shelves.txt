@@ -1,0 +1,6 @@
+Shelf 1: 39 books
+  First three: La vie devant soi | Les flamboyants | John l'Enfer
+  Last three: L'art français de la guerre | Le sermon sur la chute de Rome | Au revoir là-haut
+Shelf 2: 34 books
+  First three: La Littérature sans estomac | Le Jourde & Naulleau | Au secours, Houellebecq revient !
+  Last three: Un homme qui dort | Le Condottière | À la recherche du temps perdu I

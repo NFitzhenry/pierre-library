@@ -1,0 +1,29 @@
+kind,bookcase,column,shelf,position,author,title,publisher_series,series_number,legibility,notes,photo
+resolve,Bookcase 1,Column 1,1,25,Samuel Beckett,En attendant Godot,Minuit,,probable,"read from IMG_0528 with contrast enhancement; three faint lines 'En / attendant / Godot', letters partly legible",IMG_0528
+resolve,Bookcase 1,Column 1,2,2,,,Pocket,,illegible,"IMG_0529 shows Besson (Le dîner de filles) directly against Bloy; only a thin dark red edge visible between them, no text; may be a recessed book or Besson's own cover",IMG_0529
+delete,Bookcase 1,Column 1,3,9,,,,,certain,IMG_0530: the large 'C' and 'D' are the flared front cover of Don Quichotte II (same flared cover shows on vol. I); Coben follows directly; not a separate book,IMG_0530
+delete,Bookcase 1,Column 1,6,30,,,,,probable,IMG_0531: between La peau and Mallet-Joris only the flared front cover of La peau is visible; no separate teal book; probably not a book,IMG_0531
+resolve,Bookcase 1,Column 1,10,1,André Suarès,Marsiho,Éditions Jeanne Laffitte,,certain,read from IMG_0534,IMG_0534
+delete,Bookcase 1,Column 1,10,9,,,,,probable,IMG_0534: Cheyenne and Le bachelier stand directly together; no dark blue book visible; probably not a separate book,IMG_0534
+resolve,Bookcase 1,Column 1,10,19,Oscar Wilde,Le portrait de Dorian Gray,Le Livre de Poche,569,certain,read from IMG_0533; number is 569 not 589,IMG_0533
+resolve,Bookcase 1,Column 1,10,28,Zola,L'œuvre,Le Livre de Poche,429,certain,read from IMG_0532,IMG_0532
+other,Bookcase 1,Column 1,2,1,Patrick Besson,Le dîner de filles,Pocket,4388,certain,number is 4388 (catalogue had 888),IMG_0529
+other,Bookcase 1,Column 1,2,7,Jean-Louis Bory,Ma moitié d'orange,Presses Pocket,613,certain,Presses Pocket logo at foot of spine,IMG_0529
+other,Bookcase 1,Column 1,6,31,Françoise Mallet-Joris,La maison de papier,Le Livre de Poche,3337,certain,number legible: 3337,IMG_0531
+other,Bookcase 1,Column 1,10,3,Roland Topor,Four roses for Lucienne,10/18,1213,certain,now clearly legible,IMG_0534
+other,Bookcase 1,Column 1,10,4,Jean Teulé,Darling,Pocket,10675,certain,number 10675,IMG_0534
+other,Bookcase 1,Column 1,10,5,Alain Turgeon,Gode blessé,J'ai lu,5538,certain,author surname Turgeon now legible; number 5538,IMG_0534
+other,Bookcase 1,Column 1,10,6,Tournier,Vendredi ou les limbes du Pacifique,Folio,,certain,title clearly legible,IMG_0534
+other,Bookcase 1,Column 1,10,7,Valérie Valère,Le pavillon des enfants fous,Le Livre de Poche,5673,certain,number is 5673 (catalogue had 6873),IMG_0534
+other,Bookcase 1,Column 1,10,8,Didier van Cauwelaert,Cheyenne,Le Livre de Poche,13854,certain,number 13854,IMG_0534
+other,Bookcase 1,Column 1,10,13,Roland Topor,Café Panique,Points Virgule,V5,probable,full name visible; swirl logo and number V5 indicate Points Virgule,IMG_0533
+other,Bookcase 1,Column 1,10,14,Delphine de Vigan,Rien ne s'oppose à la nuit,Le Livre de Poche,32835,certain,number 32835,IMG_0533
+other,Bookcase 1,Column 1,10,16,Boris Vian,L'arrache-cœur,Le Livre de Poche,2398,certain,faded Livre de Poche logo at top; number 2398,IMG_0533
+other,Bookcase 1,Column 1,10,17,Stefan Zweig,Le monde d'hier,Le Livre de Poche,14040,certain,number 14040,IMG_0533
+other,Bookcase 1,Column 1,10,20,Charles Williams,Fantasia chez les ploucs,Le Livre de Poche Policier,1725,certain,surname Williams now visible; number 1725 (catalogue had 1726),IMG_0533
+other,Bookcase 1,Column 1,10,21,Martin Winckler,La vacation,J'ai lu,5082,certain,fully legible,IMG_0533
+other,Bookcase 1,Column 1,10,22,Tom Wolfe,Le bûcher des vanités,Le Livre de Poche,6788,certain,title legible; number 6788,IMG_0533
+other,Bookcase 1,Column 1,10,23,Tom Wolfe,Embuscade à Fort Bragg,Pavillons poche (Robert Laffont),,certain,publisher on orange band,IMG_0533
+other,Bookcase 1,Column 1,10,24,Tom Wolfe,"Un homme, un vrai",Pocket,10909,certain,full title legible,IMG_0532
+other,Bookcase 1,Column 1,10,25,Irvin Yalom,Et Nietzsche a pleuré,Le Livre de Poche,31760,certain,number 31760,IMG_0532
+other,Bookcase 1,Column 1,10,27,Zola,Nana,Folio,956,probable,"number partly faded, reads 95[6]",IMG_0532

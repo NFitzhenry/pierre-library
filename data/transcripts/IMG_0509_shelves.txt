@@ -1,0 +1,7 @@
+Shelf 1: 29 books
+  first: Le lecteur (Pascal Quignard); Le Professeur Frœppel (Jean Tardieu); Chut ! (Jean-Marie Gourio)
+  last: [illegible] (?); [illegible] (?); La Clôture (Jean Rolin)
+  note: same shelf as IMG_0508 shelf 2
+Shelf 2: 20 books
+  first: Lettres à son frère Théo (Vincent van Gogh); Babylone (Yasmina Reza); Naissance (Yann Moix)
+  last: Condor (Caryl Férey); L'instant qui précède (Leo Beker-Gomez); Prendre les loups pour des chiens (Hervé Le Corre)

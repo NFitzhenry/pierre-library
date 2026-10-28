@@ -1,0 +1,10 @@
+Shelf 1: 38 books
+  First three: Je voudrais que quelqu'un... (Anna Gavalda) | [untitled] (Hubert Michel) | Réparer les vivants (Maylis de Kerangal)
+  Last three: Ciels liquides (Anne Garréta) | L'Enfant halluciné (René-Jean Clot) | Michel Houellebecq ou la provocation permanente (Jean-François Patricola)
+Shelf 2: 53 books
+  First three: La Première gorgée de sperme (Fellacia Dessert) | Deux étés (Erik Orsenna) | [untitled] (Christine de Rivoyre)
+  Last three: 2084 (Boualem Sansal) | Mémoire de fille (Annie Ernaux) | Le cas Malaussène 1. Ils m'ont menti (Daniel Pennac)
+Shelf 3: 40 books
+  First three: [untitled] (Christophe Donner) | La disparition de Jim Sullivan (Tanguy Viel) | Infiniment petit (Patrick Chatelier)
+  Last three: Règne animal (Jean-Baptiste Del Amo) | Bohèmes (Dan Franck) | Regardez-nous danser (Leïla Slimani)
+  Note: lower part of shelf cut off by frame

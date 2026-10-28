@@ -1,0 +1,9 @@
+Shelf 1: 28 books
+  First three: Dictionnaire des oeuvres I : Aa-Co | Dictionnaire des oeuvres II : Co-Fa | Dictionnaire des oeuvres III : Fa-Jo
+  Last three: Guide littéraire des Passages de Paris | Guide de Paris | Paris
+Shelf 2: 25 books
+  First three: [illegible] | Au revoir là-haut | Trois jours et une vie
+  Last three: Nord | Entretiens avec le professeur Y | Lettres à la N.R.F. 1931-1961
+Shelf 3: 34 books
+  First three: Je me souviens | L'infra-ordinaire | Un homme qui dort
+  Last three: La Conjuration des imbéciles | Lettres au Castor I | La Cérémonie des adieux suivi de Entretiens avec Jean-Paul Sartre

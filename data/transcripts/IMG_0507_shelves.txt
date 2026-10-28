@@ -1,0 +1,6 @@
+Shelf 1: 28 books
+  first: L'Insoutenable Légèreté de l'être (Milan Kundera); Tigre en papier (Olivier Rolin); Le Parfum (Patrick Süskind)
+  last: Enquête sur le Saint Suaire de Turin (John H. Heller); La Sainte Bible (?); L'inconnu de l'Élysée (Pierre Péan)
+Shelf 2: 29 books
+  first: Sur ma mère (Tahar Ben Jelloun); 2084 (Boualem Sansal); Mémoire de fille (Annie Ernaux)
+  last: Cinq psychanalyses (Sigmund Freud); La folie (Jean Thuillier); Italies (Yves Hersant)

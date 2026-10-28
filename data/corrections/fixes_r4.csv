@@ -1,0 +1,13 @@
+kind,bookcase,column,shelf,position,author,title,publisher_series,series_number,legibility,notes,photo
+resolve,Bookcase 1,Column 4,1,7,Françoise Sagan,,Gallimard (nrf),,illegible,author and nrf/Gallimard clear; title area blank or completely faded even with contrast enhancement,IMG_0548
+resolve,Bookcase 1,Column 4,2,13,Jorge Luis Borges,L'Aleph,L'Imaginaire Gallimard,13,certain,spine prints 'BORGES L'ALEPH' in purple and pink block letters,IMG_0549
+resolve,Bookcase 1,Column 4,3,27,Michel Ouellebeurre,La tarte et le suppositoire,Éditions de Fallois,,probable,"cream spine with red lower band behind Drieu cassette box (IMG_0550) matches the cream/red cover shown in hand in IMG_0551; cover 'roman', band 'Prix Concours 2010'",IMG_0550; IMG_0551
+resolve,Bookcase 1,Column 4,3,28,Stéphane Hessel,Indignez-vous !,Indigène éditions (Ceux qui marchent contre le vent),,probable,thin stapled white booklet before Rolin (staples visible in IMG_0550) matches the pamphlet held in IMG_0551; publisher from collection name on cover,IMG_0550; IMG_0551
+resolve,Bookcase 1,Column 4,6,17,,Histoire des Arabes,Que sais-je ?,,probable,faint embossed/faded title reads 'HISTOIRE DES ARABES' (enhanced crop); apparently an older copy of the same title as pos 16 (no. 1627); number not legible,IMG_0552
+resolve,Bookcase 1,Column 4,6,30,,,,,certain,not a separate book: 'JANINE MATILLON' is the author line at the head of the pos 29 spine (Maurice Nadeau); see delete row,IMG_0553
+other,Bookcase 1,Column 4,6,29,Janine Matillon,Les deux fins d'Orimita Karabegović,Maurice Nadeau,,certain,author is printed at head of spine; fill author,IMG_0553
+delete,Bookcase 1,Column 4,6,30,,,,,,duplicate of pos 29 (author was split into its own row),IMG_0553
+other,Bookcase 1,Column 4,6,31,Jean-Marc Roberts,Une petite femme,Grasset,,certain,publisher Grasset printed at foot (the Grasset previously attached to pos 30 belongs here),IMG_0553
+other,Bookcase 1,Column 4,7,8,Martin Smith,Rif chez les Manouches,Gallimard (Série noire),1492,certain,title reads 'RIF CHEZ LES MANOUCHES' not 'Tif'; number 1492 not 1432,IMG_0554
+resolve,Bookcase 1,Column 4,8,24,,,,,illegible,only the top of the white bent-cover book is visible (IMG_0554 shows shelf 8 from above); no text,IMG_0554
+resolve,Bookcase 2,Left column,4,8,Christophe Donner,,,,illegible,"black cover; 'CHRISTOPHE DONNER' clear, title begins ""L'"" but the rest is hidden behind La Dentellière",IMG_0555

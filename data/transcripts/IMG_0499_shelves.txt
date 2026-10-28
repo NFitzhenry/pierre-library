@@ -1,0 +1,7 @@
+Shelf 1: 34 books
+  First 3: Les chutes (Joyce Carol Oates); Plonger (Christophe Ono-dit-Biot); Désagrégé(e) (Christophe Ono-dit-Biot)
+  Last 3: Le voyeur (Robbe-Grillet); [no title] (Christiane Rochefort); Les copains (Jules Romains)
+Shelf 2: 41 books
+  First 3: Le repos du guerrier (Christiane Rochefort); Les petits enfants du siècle (Christiane Rochefort); Encore heureux qu'on va vers l'été (Christiane Rochefort)
+  Last 3: Le jeune homme au téléphone (Françoise Simpère); Des souris et des hommes (Steinbeck); À l'est d'Éden (John Steinbeck)
+Top of frame (cut-off) = IMG_0498 shelf 1, not transcribed here. Shelf 1 = IMG_0498 shelf 2. Shelf 2 = IMG_0500 shelf 1.

@@ -1,0 +1,3 @@
+Shelf 1: 22 books
+  First: [illegible] | [Hervé Le Corre] | Le mystère de la maison rouge
+  Last: Le jobi du Racati | Hématome | Tropique du pervers

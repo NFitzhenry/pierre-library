@@ -1,0 +1,10 @@
+Shelf 1: 33 books
+  First: Le soleil des mourants (Jean-Claude Izzo); Le Nain Jaune (Pascal Jardin); Histoire d'amour (Régis Jauffret)
+  Last: La maison de papier (Françoise Mallet-Joris); Les enfants sauvages (Lucien Malson); La mort à Venise (Thomas Mann)
+Shelf 2: 33 books
+  First: La vagabonde des Highlands (Joan[…]land); La montagne magique (Thomas Mann); L'Héritage d'Esther (Sándor Márai)
+  Last: Attentat (Amélie Nothomb); Péplum (Amélie Nothomb); L'enfant ébloui (Rachid O.)
+Shelf 3: 34 books
+  First: Les Chutes (…es); Plonger (Christophe Ono-dit-Biot); Désagrégé(e) (Christophe Ono-dit-Biot)
+  Last: Le voyeur (Alain Robbe-Grillet); [illegible] (?); Les copains (?)
+Shelf 1 is the same shelf as IMG_0496 shelf 2. Shelf 3 is cut off at bottom of frame (only upper half of spines visible); may overlap a later photo.

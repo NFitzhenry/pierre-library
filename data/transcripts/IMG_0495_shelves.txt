@@ -1,0 +1,7 @@
+Shelf 1: 29 books
+  First: Un mec sympa (Laurent Chalumeau); Le siffleur (Laurent Chalumeau); Mémoires d'outre-tombe (Chateaubriand)
+  Last: Bang ! Bang ! (Christophe Donner); Maudit manège (Philippe Djian); Paroles pour adolescents (F. Dolto, C. Dolto-Tolitch)
+Shelf 2: 36 books
+  First: Le joueur (Dostoïevski); The Snapper (Roddy Doyle); La comédie de Charleroi (Drieu la Rochelle)
+  Last: Journal (Anne Frank); Victor Hugo (Sandrine Fillipetti); L'affreux Pastis de la rue des Merles (Carlo Emilio Gadda)
+Cut-off strip at bottom of frame (not transcribed) = IMG_0496 shelf 1 (Gainsbourg ... Ionesco).

@@ -1,0 +1,7 @@
+Shelf 1: 19 books
+  first: Babylone (Yasmina Reza); Naissance (Yann Moix); D'autres vies que la mienne (Emmanuel Carrère)
+  last: Condor (Caryl Férey); L'instant qui précède (Leo Beker-Gomez); Prendre les loups pour des chiens (Hervé Le Corre)
+  note: same shelf as IMG_0509 shelf 2
+Shelf 2: 17 books
+  first: Vialatte à la Montagne (Alexandre Vialatte); Bestiaire (Alexandre Vialatte); Le mystère Henri Pick (David Foenkinos)
+  last: Monsieur Teste (Paul Valéry); L'homme pressé (Paul Morand); Septentrion (Louis Calaferte)

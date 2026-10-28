@@ -1,0 +1,22 @@
+kind,bookcase,column,shelf,position,author,title,publisher_series,series_number,legibility,notes,photo
+delete,Bookcase 1,Column 2,1,3,,,,,certain,"not a separate book: the strip is the front cover of Albert Londres (pos 2) seen at an angle; shows ""Pierre [Assouline]"", red ""Al[bert Londres]"", subtitle line initials V/d/r/1 (Vie et mort d'un grand reporter 1884-1932) and italic ""B[alland]""",IMG_0535
+delete,Bookcase 1,Column 2,1,7,,,,,probable,"not a separate book: the dark strip is the front of the torn dust jacket of Vitoux, La vie de Céline (pos 6); the torn white jacket edge runs continuously from spine to strip",IMG_0535
+resolve,Bookcase 1,Column 2,1,14,,,,,illegible,"thin dark strip with red edges between le Carré and Sexus politicus, seen in IMG_0524 and IMG_0535; no text visible; may be the edge of le Carré's plastic cover rather than a book",IMG_0535
+resolve,Bookcase 1,Column 2,2,41,Albert Camus,L'Étranger,Gallimard (nrf),,probable,"read from IMG_0539/IMG_0526: red title ""[L']ÉTRANGER"", first letter faint",IMG_0539
+resolve,Bookcase 1,Column 2,3,27,Roger Nimier,Journées de lectures,Gallimard (nrf),,probable,"read from IMG_0527 (contrast-enhanced); title printed very faintly, ""JOURNÉES DE LECTURES""",IMG_0527
+resolve,Bookcase 1,Column 2,4,3,,Le goût de l'été,,,certain,"read from IMG_0538; orange spine; only the title is printed on the visible part, no author or publisher",IMG_0538
+resolve,Bookcase 1,Column 2,4,8,Romain Gary,,,,illegible,"black book lying across the row; top of spine reads ""Romain Gary (Émile Ajar)""; title still hidden behind the books in front",IMG_0537
+resolve,Bookcase 1,Column 2,4,28,,Écrire pour le théâtre,CNRS Éditions (Arts du spectacle),,certain,"read from IMG_0536; publisher logo is CNRS (not Actes Sud-Papiers), series roundel ""Arts du spectacle""; no author on spine",IMG_0536
+resolve,Bookcase 1,Column 2,4,31,Harold Pinter,No man's land; Le monte-plats; Une petite douleur; Paysage; Dix sketches,Gallimard (Du monde entier),,certain,read from IMG_0536; all five titles listed on spine,IMG_0536
+delete,Bookcase 1,Column 2,4,38,,,,,probable,"no book between L'éloignement and Cuisine et dépendances in IMG_0536; the 'orange spine' in IMG_0502 is the lamp-lit pink spine of L'Avant-Scène Théâtre no. 895 (pos 39), whose bent cover ('Sommaire 895') stands behind",IMG_0536
+other,Bookcase 1,Column 2,1,5,Pierre Assouline,Simenon,Julliard,,certain,"title ""SIMENON"" clearly legible in IMG_0535; upgrade from probable",IMG_0535
+other,Bookcase 1,Column 2,2,40,Raymond Queneau,Exercices de style,Gallimard (nrf),,certain,title fully legible in IMG_0539,IMG_0539
+other,Bookcase 1,Column 2,2,43,Émile Zola,Le ventre de Paris,Éditions Self,,certain,"publisher at foot of spine reads ""ÉDITIONS SELF""",IMG_0539
+other,Bookcase 1,Column 2,4,36,Yasmina Reza,Art,Actes Sud-Papiers,,certain,clearly legible in IMG_0536; upgrade from probable,IMG_0536
+other,Bookcase 1,Column 2,4,37,Loleh Bellon,L'éloignement,Actes Sud-Papiers,,certain,clearly legible in IMG_0536; upgrade from probable,IMG_0536
+other,Bookcase 1,Column 2,4,39,A. Jaoui; J.-P. Bacri,Cuisine et dépendances,L'Avant-Scène Théâtre,895,certain,issue number N°895 legible in IMG_0536,IMG_0536
+other,Bookcase 1,Column 2,4,40,Agnès Jaoui; Jean-Pierre Bacri,Un air de famille,L'Avant-Scène Théâtre,956,certain,issue number N°956 legible in IMG_0536,IMG_0536
+insert_after,Bookcase 1,Column 2,4,40,,,Librio,,illegible,"book missing from catalogue at right end of shelf, behind/after Un air de famille; dark red and white spine with Librio logo; only a cut-off word, apparently ""Philosophie"", visible",IMG_0536
+resolve,Bookcase 1,Column 3,2,3,Christine de Rivoyre,Racontez-moi les flamboyants,Grasset,,certain,"Column 3 shelf, visible at right edge of IMG_0526",IMG_0526
+resolve,Bookcase 1,Column 3,2,4,,,,,illegible,"Column 3; IMG_0526 shows only the lower spine of the book after Rivoyre (a second ""Grasset"" foot); not enough to identify",IMG_0526
+resolve,Bookcase 1,Column 3,3,1,Christophe Donner,L'innocent,Grasset,,probable,"Column 3 shelf, visible at right edge of IMG_0527; title small but readable",IMG_0527

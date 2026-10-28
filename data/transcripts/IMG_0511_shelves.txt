@@ -1,0 +1,6 @@
+Shelf 1: 34 books
+  First: Léo Prat et la forme blanche | L'équarrisseur | Angel Rock
+  Last: J'irai cracher sur vos tombes | Le crime de Sylvestre Bonnard | L'éternité derrière
+Shelf 2: 22 books
+  First: Total Khéops | Chourmo | Solea
+  Last: Alex | Travail soigné | Sacrifices

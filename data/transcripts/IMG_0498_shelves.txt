@@ -1,0 +1,10 @@
+Shelf 0: 35 books
+  First 3: [no title] (Jean-Claude); [no title]; [no title]
+  Last 3: [no title] (Françoise Mallet-Joris); [no title]; [no title]
+Shelf 1: 33 books
+  First 3: La vagabonde des Highlands (Joanna Maitland); La montagne magique (Thomas Mann); L'héritage d'Esther (Sándor Márai)
+  Last 3: Attentat (Amélie Nothomb); Péplum (Amélie Nothomb); L'enfant ébloui (Rachid O.)
+Shelf 2: 34 books
+  First 3: Les chutes (Joyce Carol Oates); Plonger (Christophe Ono-dit-Biot); Désagrégé(e) (Christophe Ono-dit-Biot)
+  Last 3: Le voyeur (Robbe-Grillet); Printemps au parking (Christiane Rochefort); Les copains (Jules Romains)
+Shelf 0 is the cut-off bottom of the shelf above (only spine feet visible). Shelf 2 = IMG_0499 shelf 1.

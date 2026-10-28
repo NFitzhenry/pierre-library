@@ -1,0 +1,19 @@
+kind,bookcase,column,shelf,position,author,title,publisher_series,series_number,legibility,notes,photo
+resolve,Bookcase 1,Column 3,1,2,Hubert Michel,Requiem pour une huître,Le Dilettante,,probable,read from IMG_0543; end of 'HUÎTRE' partly covered by pearl image but reading clear,IMG_0543
+resolve,Bookcase 1,Column 3,1,25,,,,,illegible,"IMG_0541 contrast-enhanced: only fragments, possibly '...FONDEMEN...'; author and rest unreadable",IMG_0541
+resolve,Bookcase 1,Column 3,1,29,La Rochefoucauld,Maximes et autres œuvres morales,Gibert Jeune,,probable,"IMG_0541: label reads '...A ROCHEFOUCAU...', first letters cut by Bachelard",IMG_0541
+resolve,Bookcase 1,Column 3,2,3,Christine de Rivoyre,Racontez-moi les flamboyants,Grasset,,certain,read from IMG_0540,IMG_0540
+delete,Bookcase 1,Column 3,2,4,,,,,certain,"IMG_0540: no book between Rivoyre and Weyergans; the yellow strip is the edge of the leaning Rivoyre volume, the two Grasset spines touch",IMG_0540
+resolve,Bookcase 1,Column 3,2,22,Jean-Pierre Ostende,Le neveu chronique,L'Arpenteur,,probable,"IMG_0542: title very faint but reads 'LE NEVEU CHRONIQUE'; ladder logo matches L'Arpenteur (as on McNeil)",IMG_0542
+resolve,Bookcase 1,Column 3,2,33,Amélie Nothomb,Hygiène de l'assassin,Albin Michel,,probable,"IMG_0542: faint italic title 'Hygiène de l'assassin', readable on zoom",IMG_0542
+resolve,Bookcase 1,Column 3,3,1,Christophe Donner,L'innocent,Grasset,,certain,read from IMG_0544,IMG_0544
+resolve,Bookcase 1,Column 3,3,15,Françoise Chandernagor,,,,illegible,IMG_0544 does not show the dark hardback behind; still unreadable,IMG_0544
+resolve,Bookcase 1,Column 3,4,7,,Les hauts lieux de la l...,,,illegible,"IMG_0546: dark blue book behind 25 histoires de Marseille; only 'LES HAUTS LIEUX DE L...' visible, ending hidden",IMG_0546
+resolve,Bookcase 1,Column 3,4,12,Jean Piat; Patrick Wajsman,Vous n'aurez pas le dernier mot !,Albin Michel,,certain,read from IMG_0547,IMG_0547
+other,Bookcase 1,Column 3,2,1,Fellacia Dessert,La Première gorgée de sperme,Éditions Blanche,,certain,IMG_0540 clear; upgrade from probable,IMG_0540
+other,Bookcase 1,Column 3,2,5,François Weyergans,Franz et François,Grasset,,certain,IMG_0540 clear; upgrade from probable,IMG_0540
+other,Bookcase 1,Column 3,2,12,Nicolas Jones-Gorlin,Rose bonbon,Gallimard (nrf),,certain,IMG_0540 clear; upgrade from probable,IMG_0540
+other,Bookcase 1,Column 3,2,15,Marcel Jouhandeau,Chaminadour,Gallimard (nrf),,certain,IMG_0542 clear; upgrade from probable,IMG_0542
+other,Bookcase 1,Column 3,2,21,Alejo Carpentier,La harpe et l'ombre,Gallimard (Du monde entier),,certain,IMG_0542 clear; upgrade from probable,IMG_0542
+other,Bookcase 1,Column 3,2,28,Christian Bobin,Une petite robe de fête,Gallimard (nrf),,certain,IMG_0542 clear; upgrade from probable,IMG_0542
+other,Bookcase 1,Column 3,4,13,Jeanne Champion,Suzanne Valadon,,,certain,IMG_0545/0546: script author name at top reads 'Jeanne Champion',IMG_0545
