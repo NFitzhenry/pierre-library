@@ -363,6 +363,59 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 .essay b { font-weight: 600; color: #f1ead9; }
 .essay .note { font-family: var(--font-type); font-size: .82rem; line-height: 1.55; color: var(--ink-soft); border-left: 2px solid #c2473a; padding-left: 12px; }
 .essay[hidden] { display: none; }
+
+/* data tab */
+#v-figures { max-width: 1120px; }
+.figs { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); }
+.figs .dfacts { grid-column: 1 / -1; list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.figs .dfacts li { background: #26241f; border: 1px solid #3b332b; border-radius: 4px; padding: 14px 16px 12px; }
+.figs .dfacts b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 2.1rem; line-height: 1.05; color: #e9cf9f; white-space: nowrap; }
+.figs .dfacts span { display: block; font-family: var(--font-type); font-size: .72rem; line-height: 1.35; color: var(--ink-soft); margin-top: 5px; }
+.figs .panel { background: linear-gradient(#27251f, #211f1b); border: 1px solid #3b332b; border-radius: 4px; padding: 18px 20px 16px; min-width: 0; display: grid; gap: 10px; align-content: start; box-shadow: 0 10px 30px -18px #000; }
+.figs .panel.wide { grid-column: 1 / -1; }
+.figs .panel h3 { margin: 0; font-family: var(--font-display); font-weight: 500; font-variant: small-caps; letter-spacing: .05em; font-size: 1.35rem; color: #e9cf9f; }
+.figs .panel p { margin: 0; font-family: var(--font-display); font-size: .98rem; color: #cfc9bd; line-height: 1.45; max-width: 75ch; }
+.figs .ph { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.figs .seg { display: inline-flex; border: 1px solid #4a4237; border-radius: 3px; overflow: hidden; }
+.figs .seg button { all: unset; cursor: pointer; font-family: var(--font-type); font-size: .72rem; padding: 4px 10px; color: var(--ink-soft); }
+.figs .seg button[aria-pressed="true"] { background: #4a4237; color: #f1ead9; }
+.figs .seg button:focus-visible { outline: 2px solid #c9a86a; }
+.figs .lg { display: flex; flex-wrap: wrap; gap: 4px 16px; font-family: var(--font-type); font-size: .72rem; color: #cfc9bd; }
+.figs .lg span { display: inline-flex; align-items: center; gap: 6px; }
+.figs .lg i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.barcode { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 18px 28px; margin-top: 4px; }
+.bc-h { font-family: var(--font-type); font-size: .72rem; color: #c9a86a; margin-bottom: 6px; text-transform: lowercase; }
+.bc-row { display: grid; grid-template-columns: 16px 1fr 26px; align-items: center; gap: 8px; height: 26px; border-bottom: 1px solid #3a352d; }
+.bc-s, .bc-n { font-family: var(--font-type); font-size: .66rem; color: #8d877b; font-variant-numeric: tabular-nums; }
+.bc-n { text-align: right; }
+.bc-books { display: flex; gap: 2px; align-items: flex-end; height: 20px; }
+.bc-books i { flex: 0 1 6px; min-width: 2px; height: 100%; border-radius: 1px 1px 0 0; cursor: pointer; transition: transform .1s; }
+.bc-books i:nth-child(3n) { height: 88%; } .bc-books i:nth-child(5n+1) { height: 94%; }
+.bc-books i:hover { transform: translateY(-3px); filter: brightness(1.25); }
+.hbs { display: grid; gap: 4px; }
+.hb { all: unset; display: grid; grid-template-columns: minmax(8rem, 12rem) 1fr; gap: 10px; align-items: center; font-family: var(--font-display); font-size: .95rem; color: #e7e2d8; padding: 1px 0; }
+button.hb { cursor: pointer; }
+button.hb:hover .lab, button.hb:focus-visible .lab { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #c9a86a; }
+.hb .lab { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hb .track { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.hb .bar { height: 12px; background: #c9a86a; border-radius: 0 4px 4px 0; min-width: 2px; }
+.hb .val, .dc .val { font-family: var(--font-type); font-size: .72rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.dcols { display: flex; align-items: flex-end; gap: 6px; height: 210px; border-bottom: 1px solid #6b6d74; padding-top: 6px; margin-bottom: 26px; }
+.dc { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; position: relative; }
+.dc .stack { width: 100%; max-width: 46px; display: flex; flex-direction: column-reverse; gap: 2px; min-height: 0; }
+.dc .stack i { display: block; min-height: 2px; }
+.dc .stack i:last-child { border-radius: 4px 4px 0 0; }
+.dc:hover .stack { filter: brightness(1.15); }
+.dc .dl { position: absolute; top: 100%; margin-top: 6px; font-family: var(--font-type); font-size: .64rem; color: var(--ink-soft); white-space: nowrap; }
+.extremes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px 24px; }
+.extremes .k { display: block; font-family: var(--font-type); font-size: .7rem; color: #c9a86a; margin-bottom: 2px; }
+.extremes .bk { all: unset; cursor: pointer; display: block; font-family: var(--font-display); font-size: .95rem; color: #e7e2d8; }
+.extremes .bk span { font-family: var(--font-type); font-size: .72rem; color: var(--ink-soft); }
+.extremes .bk:hover i { text-decoration: underline; text-underline-offset: 3px; }
+.vtip { position: fixed; z-index: 30; pointer-events: none; background: #f1ead9; color: #1f1b16; font-family: var(--font-type); font-size: .74rem; padding: 6px 9px; border-radius: 2px; box-shadow: 0 8px 20px -8px #000c; border-top: 2px solid #c2473a; max-width: 300px; }
+.vtip[hidden] { display: none; }
+html { background: #2c2d32; }
+
 /* collection visuals */
 .essay ul.facts { list-style: none; padding: 0; margin: .4em 0 .5em; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 .essay ul.facts li { background: #221e1a; border: 1px solid #3b332b; border-radius: 4px; padding: 12px 14px 11px; }
@@ -457,7 +510,7 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 <div class="mosaic" aria-hidden="true"></div>
 <ul class="facts">
 <li><b>1 034</b><span>livres</span></li>
-<li><b>573</b><span>auteurs</span></li>
+<li><b>570</b><span>auteurs</span></li>
 <li><b>≈ 90</b><span>éditeurs</span></li>
 <li><b>1997</b><span>année médiane de publication</span></li>
 <li><b>1882–2024</b><span>de la plus ancienne à la plus récente édition</span></li>
@@ -502,7 +555,7 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 <div class="mosaic" aria-hidden="true"></div>
 <ul class="facts">
 <li><b>1,034</b><span>books</span></li>
-<li><b>573</b><span>authors</span></li>
+<li><b>570</b><span>authors</span></li>
 <li><b>≈ 90</b><span>publishers</span></li>
 <li><b>1997</b><span>median year of publication</span></li>
 <li><b>1882–2024</b><span>oldest to newest edition</span></li>
@@ -1174,30 +1227,143 @@ tbody.addEventListener("keydown", e => { if (e.key === "Enter") { const tr = e.t
 })();
 
 // Figures
+const FMT_COL = { poche: "#5a8fd4", grand: "#c98236", none: "#55575e" };
+const DEC_RAMP = ["#82552a", "#a06a31", "#bd8139", "#d69a52", "#eab778", "#f7d8a8"];
+const POCHE_RE = /folio|livre de poche|^points|pocket|10\/18|j'ai lu|babel|^gf|garnier.?flammarion|librio|que sais-je|rivages|petite biblioth|libretto|motifs|série noire|fleuve noir|l'imaginaire|^tel\b|^idées|^presses pocket|^le grand livre du mois/i;
+const fmtOf = b => !b.p ? "none" : POCHE_RE.test(b.p) ? "poche" : "grand";
+const AUTHOR_ALIAS = { "Céline": "Louis-Ferdinand Céline", "L.-F. Céline": "Louis-Ferdinand Céline", "Chris Donner": "Christophe Donner", "Christopher Donner": "Christophe Donner",
+  "Sartre": "Jean-Paul Sartre", "J.-P. Sartre": "Jean-Paul Sartre", "Drieu la Rochelle": "Pierre Drieu La Rochelle", "Anne F. Garréta": "Anne Garréta",
+  "A. Jaoui": "Agnès Jaoui", "J.-P. Bacri": "Jean-Pierre Bacri", "F. Dolto": "Françoise Dolto", "Naulleau": "Éric Naulleau", "Jourde": "Pierre Jourde" };
+const authorsOf = b => (b.a || "").split(/;|\/|, (?=[A-ZÉ])/).map(x => x.trim()).filter(Boolean).map(x => AUTHOR_ALIAS[x] || x);
+const pagesOf = b => { const m = /(\d+)\s*p\b/.exec(b.pg || ""); return m ? +m[1] : null; };
 function renderFigures() {
+  const fr = LANG === "fr";
   const figs = document.getElementById("figs");
-  const count = f => { const m = new Map(); for (const b of BOOKS) { const k = f(b); if (k) m.set(k, (m.get(k) || 0) + 1); } return [...m].sort((x, y) => y[1] - x[1]); };
-  const hbars = (rows, n, unit) => { const top = rows.slice(0, n), max = top[0] ? top[0][1] : 1; return `<div class="hbars">${top.map(([k, v]) => `<div class="hbar" title="${esc2(k)}: ${L("books")(v)}"><span class="lab">${esc2(k)}</span><span class="track"><span class="bar" style="width:${(v / max * 100).toFixed(1)}%"></span><span class="val">${v}</span></span></div>`).join("")}</div>`; };
-  const pubName = b => { const p = b.p || ""; if (/^folio/i.test(p)) return "Folio"; if (/livre de poche/i.test(p)) return "Le Livre de Poche"; if (/^points/i.test(p)) return "Points"; if (/pocket/i.test(p)) return "Pocket"; if (/nrf|^gallimard|imaginaire|du monde entier|série noire/i.test(p)) return L("gallOther"); if (/seuil/i.test(p)) return "Seuil"; if (/babel|actes sud/i.test(p)) return "Actes Sud"; return p.replace(/\s*\(.*\)$/, ""); };
-  const authors = count(b => b.a && b.a.trim());
-  const years = BOOKS.map(b => b.y).filter(Boolean);
-  const dated = years.length;
-  const dec = new Map(); for (const y of years) { const d = y < 1900 ? 0 : Math.floor(y / 10) * 10; dec.set(d, (dec.get(d) || 0) + 1); }
-  const d0 = Math.min(...[...dec.keys()].filter(Boolean), 1950), d1 = Math.max(...dec.keys(), 2020), decs = dec.get(0) ? [[0, dec.get(0)]] : []; for (let d = d0; d <= d1; d += 10) decs.push([d, dec.get(d) || 0]);
-  const dmax = Math.max(1, ...decs.map(d => d[1]));
+  const decLabel = d => d === 0 ? (fr ? "avant 1900" : "pre-1900") : fr ? "années " + (d < 2000 ? String(d).slice(2) : d) : d + "s";
+  const fmtLabel = { poche: fr ? "Poche" : "Paperback series", grand: fr ? "Grand format" : "Publisher's edition", none: fr ? "Éditeur non lu" : "Publisher not read" };
+  // authors, merged across spellings and shared books
+  const am = new Map(); for (const b of BOOKS) for (const a of new Set(authorsOf(b))) am.set(a, (am.get(a) || 0) + 1);
+  const authors = [...am].sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]));
+  const nFmt = { poche: 0, grand: 0, none: 0 }; for (const b of BOOKS) nFmt[fmtOf(b)]++;
   const editions = BOOKS.filter(b => b.cf === "edition").length;
+  const dated = BOOKS.filter(b => b.y);
+  const pages = BOOKS.map(b => [pagesOf(b), b]).filter(x => x[0]).sort((x, y) => x[0] - y[0]);
+  const med = a => a.length % 2 ? a[(a.length - 1) / 2] : (a[a.length / 2 - 1] + a[a.length / 2]) / 2;
+  const legend = keys => `<div class="lg">${keys.map(k => `<span><i style="background:${FMT_COL[k]}"></i>${fmtLabel[k]}</span>`).join("")}</div>`;
+  const pct = n => Math.round(n / BOOKS.length * 100);
+
+  // 1. shelf barcode
+  const shelves = new Map();
+  for (const b of BOOKS) { const k = `${b.c}|${b.o}|${b.s}`; if (!shelves.has(k)) shelves.set(k, []); shelves.get(k).push(b); }
+  const cols = new Map();
+  for (const [k, bs] of shelves) { const [c, o, s] = k.split("|"); const ck = c + "|" + o; if (!cols.has(ck)) cols.set(ck, []); cols.get(ck).push([+s, bs.sort((x, y) => x.i - y.i)]); }
+  const colName = ck => { const [c, o] = ck.split("|"); return `${T[LANG].bookcase[c] ? T[LANG].bookcase[c].replace(/<[^>]+>/g, "") : c}, ${(T[LANG].column[o] || o).toLowerCase()}`; };
+  const barcode = [...cols].map(([ck, ss]) => `<div class="bc-col"><div class="bc-h">${esc2(colName(ck))}</div>${ss.sort((x, y) => x[0] - y[0]).map(([s, bs]) =>
+    `<div class="bc-row"><span class="bc-s">${s}</span><span class="bc-books">${bs.map(b => `<i data-id="${b.id}" data-f="${fmtOf(b)}" data-y="${b.y || ""}"></i>`).join("")}</span><span class="bc-n">${bs.length}</span></div>`).join("")}</div>`).join("");
+
+  // 2. top authors
+  const topA = authors.slice(0, 15), amax = topA[0][1];
+  const authorBars = topA.map(([a, n]) => `<button class="hb" data-a="${esc2(a)}" data-tip="${esc2(a)} · ${L("books")(n)}"><span class="lab">${esc2(a)}</span><span class="track"><span class="bar" style="width:${(n / amax * 100).toFixed(1)}%"></span><span class="val">${n}</span></span></button>`).join("");
+
+  // 3. publishers and series, coloured by format
+  const pubName = b => { const p = b.p || ""; if (/^folio/i.test(p)) return "Folio"; if (/livre de poche/i.test(p)) return "Le Livre de Poche"; if (/^points/i.test(p)) return "Points"; if (/pocket/i.test(p)) return "Pocket"; if (/série noire/i.test(p)) return "Série noire"; if (/nrf|^gallimard|imaginaire|du monde entier/i.test(p)) return "Gallimard"; if (/seuil/i.test(p)) return "Seuil"; if (/babel/i.test(p)) return "Babel"; if (/actes sud/i.test(p)) return "Actes Sud"; return p.replace(/\s*\(.*\)$/, ""); };
+  const pm = new Map(); for (const b of BOOKS) { if (!b.p) continue; const k = pubName(b); const r = pm.get(k) || [0, fmtOf(b)]; r[0]++; pm.set(k, r); }
+  const pubs = [...pm].sort((x, y) => y[1][0] - x[1][0]).slice(0, 15), pmax = pubs[0][1][0];
+  const pubBars = pubs.map(([k, [n, f]]) => `<div class="hb" data-tip="${esc2(k)} · ${L("books")(n)} · ${fmtLabel[f]}"><span class="lab">${esc2(k)}</span><span class="track"><span class="bar" style="width:${(n / pmax * 100).toFixed(1)}%;background:${FMT_COL[f]}"></span><span class="val">${n}</span></span></div>`).join("");
+
+  // 4. decades, stacked by format
+  const decs = new Map(); for (const b of dated) { const d = b.y < 1900 ? 0 : Math.floor(b.y / 10) * 10; const r = decs.get(d) || { poche: 0, grand: 0, none: 0 }; r[fmtOf(b)]++; decs.set(d, r); }
+  const dkeys = [...decs.keys()].sort((x, y) => x - y); const full = []; for (let d = 1920; d <= 2020; d += 10) full.push(d); if (decs.has(0)) full.unshift(0);
+  const tot = d => { const r = decs.get(d); return r ? r.poche + r.grand + r.none : 0; };
+  const dmax = Math.max(...full.map(tot));
+  const medYear = med(dated.map(b => b.y).sort((x, y) => x - y));
+  const decCols = full.map(d => { const r = decs.get(d) || { poche: 0, grand: 0, none: 0 }, n = tot(d);
+    return `<div class="dc" data-tip="${decLabel(d)} · ${L("books")(n)}${n ? ` (${fmtLabel.poche.toLowerCase()} ${r.poche}, ${fmtLabel.grand.toLowerCase()} ${r.grand})` : ""}"><span class="val">${n || ""}</span><span class="stack" style="height:${(n / dmax * 100).toFixed(1)}%">${["grand", "poche", "none"].filter(k => r[k]).map(k => `<i style="flex:${r[k]};background:${FMT_COL[k]}"></i>`).join("")}</span><span class="dl">${decLabel(d)}</span></div>`; }).join("");
+
+  // 5. length in pages
+  const bins = []; for (let x = 0; x < 1300; x += 100) bins.push([x, 0]);
+  for (const [n] of pages) bins[Math.min(bins.length - 1, Math.floor(n / 100))][1]++;
+  const bmax = Math.max(...bins.map(x => x[1]));
+  const pTot = pages.reduce((s, x) => s + x[0], 0), pMed = med(pages.map(x => x[0]));
+  const longest = pages.slice(-3).reverse(), shortest = pages.slice(0, 1);
+  const pageCols = bins.map(([x, n]) => `<div class="dc" data-tip="${x}–${x + 99} p. · ${L("books")(n)}"><span class="val">${n || ""}</span><span class="stack" style="height:${(n / bmax * 100).toFixed(1)}%"><i style="flex:1;background:#8e9aa8"></i></span><span class="dl">${x}</span></div>`).join("");
+  const bookRef = ([n, b]) => `<button class="bk" data-id="${b.id}"><i>${esc2(b.t)}</i>, ${esc2(authorsOf(b)[0] || "")} <span>${NUM(n)} p.</span></button>`;
+
   figs.innerHTML = `
-    <div class="tiles">
-      <div class="tile"><div class="v">${NUM(BOOKS.length)}</div><div class="k">${L("figBooks")}</div></div>
-      <div class="tile"><div class="v">${NUM(authors.length)}</div><div class="k">${L("figAuthors")}</div></div>
-      <div class="tile"><div class="v">${NUM(editions)}</div><div class="k">${L("figEd")}</div></div>
-      ${dated ? `<div class="tile"><div class="v">${Math.min(...years)}–${Math.max(...years)}</div><div class="k">${L("figRange")}</div></div>` : ""}
-    </div>
-    <div class="fig"><h3>${L("figTopA")}</h3><p>${L("figTopAp")}</p>${hbars(authors, 15, "")}</div>
-    <div class="fig"><h3>${L("figPub")}</h3><p>${L("figPubp")}</p>${hbars(count(pubName), 15, "")}</div>
-    <div class="fig" style="grid-column: 1 / -1"><h3>${L("figDec")}</h3><p>${dated ? L("figDecp")(NUM(dated), NUM(BOOKS.length)) : ""}</p>
-      ${dated ? `<div class="vbars">${decs.map(([d, v]) => `<div class="vcol" title="${L("decade")(d)}: ${L("books")(v)}"><span class="val">${v || ""}</span><span class="bar" style="height:${(v / dmax * 100).toFixed(1)}%"></span></div>`).join("")}</div><div class="vlabels">${decs.map(([d]) => `<span>${L("decade")(d)}</span>`).join("")}</div>` : ""}</div>`;
+    <ul class="facts dfacts">
+      <li><b>${NUM(BOOKS.length)}</b><span>${fr ? "livres" : "books"}</span></li>
+      <li><b>${NUM(authors.length)}</b><span>${fr ? "auteurs" : "authors"}</span></li>
+      <li><b>${pct(nFmt.poche)}${fr ? " " : ""}%</b><span>${fr ? "en collection de poche" : "in paperback series"}</span></li>
+      <li><b>${NUM(editions)}</b><span>${fr ? "éditions identifiées à la BnF" : "editions identified at the BnF"}</span></li>
+      <li><b>${NUM(Math.round(pTot / 1000) * 1000)}</b><span>${fr ? `pages, pour les ${NUM(pages.length)} livres dont on connaît la longueur` : `pages, for the ${NUM(pages.length)} books of known length`}</span></li>
+    </ul>
+
+    <section class="panel wide">
+      <div class="ph"><h3>${fr ? "Les 33 étagères, livre par livre" : "The 33 shelves, book by book"}</h3>
+        <div class="seg" role="group"><button data-m="fmt" aria-pressed="true">${fr ? "Format" : "Format"}</button><button data-m="dec" aria-pressed="false">${fr ? "Décennie de l'édition" : "Decade of edition"}</button></div></div>
+      <p>${fr ? "Chaque trait est un livre, dans l'ordre où il est rangé de gauche à droite. Survolez un trait pour voir le livre, cliquez pour le retrouver sur l'étagère." : "Each mark is one book, in its order on the shelf from left to right. Hover over a mark to see the book; click to find it on the shelf."}</p>
+      <div class="bc-legend"></div>
+      <div class="barcode">${barcode}</div>
+    </section>
+
+    <section class="panel">
+      <h3>${fr ? "Auteurs les plus présents" : "Most represented authors"}</h3>
+      <p>${fr ? "Nombre de livres, toutes graphies du nom réunies (Chris Donner et Christophe Donner, par exemple). Cliquez pour voir la liste." : "Number of books, with spellings of a name merged (Chris Donner and Christophe Donner, for example). Click to see the list."}</p>
+      <div class="hbs">${authorBars}</div>
+    </section>
+
+    <section class="panel">
+      <h3>${fr ? "Éditeurs et collections" : "Publishers and series"}</h3>
+      <p>${fr ? "D'après le dos du livre ; les 15 plus fréquents." : "As printed on the spine; the 15 most frequent."}</p>
+      ${legend(["poche", "grand"])}
+      <div class="hbs">${pubBars}</div>
+    </section>
+
+    <section class="panel wide">
+      <h3>${fr ? "Année de l'édition, par décennie" : "Year of the edition, by decade"}</h3>
+      <p>${fr ? `Pour les ${NUM(dated.length)} livres dont l'édition exacte a été trouvée au catalogue de la BnF. Année médiane : ${Math.round(medYear)}.` : `For the ${NUM(dated.length)} books whose exact edition was found in the BnF catalogue. Median year: ${Math.round(medYear)}.`}</p>
+      ${legend(["grand", "poche", "none"])}
+      <div class="dcols">${decCols}</div>
+    </section>
+
+    <section class="panel wide">
+      <h3>${fr ? "Longueur des livres" : "Length of the books"}</h3>
+      <p>${fr ? `Nombre de pages d'après la BnF, pour ${NUM(pages.length)} livres, par tranches de 100 pages. Longueur médiane : ${NUM(Math.round(pMed))} pages.` : `Page count from the BnF, for ${NUM(pages.length)} books, in bands of 100 pages. Median length: ${NUM(Math.round(pMed))} pages.`}</p>
+      <div class="dcols pages">${pageCols}</div>
+      <div class="extremes"><div><span class="k">${fr ? "Les plus longs" : "Longest"}</span>${longest.map(bookRef).join("")}</div><div><span class="k">${fr ? "Le plus court" : "Shortest"}</span>${shortest.map(bookRef).join("")}</div></div>
+    </section>`;
+
+  const paint = mode => {
+    const lg = figs.querySelector(".bc-legend");
+    if (mode === "fmt") { lg.innerHTML = legend(["poche", "grand", "none"]); figs.querySelectorAll(".bc-books i").forEach(i => i.style.background = FMT_COL[i.dataset.f]); }
+    else {
+      const bands = [[0, 1969], [1970, 1979], [1980, 1989], [1990, 1999], [2000, 2009], [2010, 2100]];
+      const names = fr ? ["avant 1970", "années 70", "années 80", "années 90", "années 2000", "depuis 2010"] : ["before 1970", "1970s", "1980s", "1990s", "2000s", "2010 on"];
+      lg.innerHTML = `<div class="lg">${bands.map((_, k) => `<span><i style="background:${DEC_RAMP[k]}"></i>${names[k]}</span>`).join("")}<span><i style="background:#3e4047"></i>${fr ? "édition non identifiée" : "edition not identified"}</span></div>`;
+      figs.querySelectorAll(".bc-books i").forEach(i => { const y = +i.dataset.y; const k = bands.findIndex(([a, z]) => y >= a && y <= z); i.style.background = y ? DEC_RAMP[k] : "#3e4047"; });
+    }
+    figs.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
+  };
+  paint(figs.dataset.mode || "fmt");
+  figs.querySelector(".seg").addEventListener("click", e => { const b = e.target.closest("button[data-m]"); if (b) { figs.dataset.mode = b.dataset.m; paint(b.dataset.m); } });
 }
+(() => {
+  const figs = document.getElementById("figs"), vt = document.createElement("div");
+  vt.className = "vtip"; vt.hidden = true; document.body.appendChild(vt);
+  const place = (x, y) => { const r = vt.getBoundingClientRect(); vt.style.left = Math.min(innerWidth - r.width - 12, x + 14) + "px"; vt.style.top = Math.max(12, y - r.height - 12) + "px"; };
+  figs.addEventListener("mousemove", e => {
+    const bk = e.target.closest("[data-id]");
+    if (bk) { vt.hidden = true; bk._b = BOOKS[+bk.dataset.id]; if (hoverOk(e)) show(bk, e.clientX, e.clientY); return; }
+    tip.hidden = true;
+    const d = e.target.closest("[data-tip]"); if (!d) { vt.hidden = true; return; }
+    vt.textContent = d.dataset.tip; vt.hidden = false; place(e.clientX, e.clientY);
+  });
+  figs.addEventListener("mouseleave", () => { vt.hidden = true; tip.hidden = true; });
+  figs.addEventListener("click", e => {
+    const bk = e.target.closest("[data-id]"); if (bk) { tip.hidden = true; vt.hidden = true; locate(bk.dataset.id); return; }
+    const a = e.target.closest("[data-a]"); if (a) { vt.hidden = true; const name = a.dataset.a; const alias = Object.keys(AUTHOR_ALIAS).filter(k => AUTHOR_ALIAS[k] === name); q.value = (alias.length ? name.split(" ").pop() : name); lf.value = "all"; location.hash = "list"; runSearch(); renderList(); }
+  });
+})();
 renderFigures();
 
 // ---------- Zoom: whole wall first; click, pinch or slider to look closer ----------
