@@ -798,10 +798,14 @@ const FLASKS = [
   [1280, 1398, 250, 200, 50, "brownCup"], [1388, 1492, 346, 318, 26, "greenSmall"], [1493, 1600, 256, 238, 42, "brownCupSmall"],
   [1610, 1725, 312, 288, 26, "silverLeather"]
 ];
-function flaskRow(W) {
+const FLASK_H = 170;
+function flaskRow(W, H = FLASK_H) {
   // Heights follow the photo; the row is spread to the width of the drawn shelf, as the flasks fill the real shelf end to end.
-  const base = 465, span = 1725 - 105, sc = Math.min(108 / (base - 186), (W - 10) / span), sx = (W - 16) / span, kw = Math.min(1.35, sx / sc * .92);
-  const Y = y => 120 - (base - y) * sc;
+  // True proportions from the photo, scaled to the shelf height, with equal gaps between flasks.
+  const base = 465, sumW = FLASKS.reduce((s, f) => s + f[1] - f[0], 0);
+  const sc = Math.min((H - 8) / (base - 186), (W - 4 * (FLASKS.length + 1)) / sumW), gap = (W - sumW * sc) / (FLASKS.length + 1);
+  const Y = y => H - (base - y) * sc;
+  let cursor = gap;
   const defs = `<defs>
     <linearGradient id="fk-silver" x1="0" x2="1"><stop offset="0" stop-color="#6d7277"/><stop offset=".18" stop-color="#e9ecee"/><stop offset=".34" stop-color="#a9aeb3"/><stop offset=".62" stop-color="#cfd3d6"/><stop offset=".86" stop-color="#7b8085"/><stop offset="1" stop-color="#4b4f53"/></linearGradient>
     <linearGradient id="fk-pewter" x1="0" x2="1"><stop offset="0" stop-color="#55595c"/><stop offset=".25" stop-color="#a7aaab"/><stop offset=".55" stop-color="#8a8d8f"/><stop offset=".85" stop-color="#5d6164"/><stop offset="1" stop-color="#3f4245"/></linearGradient>
@@ -816,14 +820,14 @@ function flaskRow(W) {
   </defs>`;
   let out = defs;
   for (const [x0, x1, top, capTop, capW, kind] of FLASKS) {
-    const w = (x1 - x0) * sc * kw, x = 8 + ((x0 + x1) / 2 - 105) * sx - w / 2 + (x0 === 105 ? w * 0 : 0), y = Y(top), h = 120 - y, cx = x + w / 2, cw = capW * sc, cy = Y(capTop), ch = y - cy + 1;
+    const w = (x1 - x0) * sc, x = cursor, y = Y(top), h = H - y, cx = x + w / 2, cw = capW * sc, cy = Y(capTop), ch = y - cy + 1;
     const r = Math.min(w * .32, h * .25);
     const body = (fill, rx = r) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}"/>`;
     const cap = (fill = "url(#fk-silver)", dome = false) => dome
       ? `<path d="M${cx - cw / 2} ${y + 1} V${cy + cw * .4} Q${cx - cw / 2} ${cy} ${cx} ${cy} Q${cx + cw / 2} ${cy} ${cx + cw / 2} ${cy + cw * .4} V${y + 1} Z" fill="${fill}"/>`
       : `<rect x="${cx - cw / 2}" y="${cy}" width="${cw}" height="${ch}" rx="${Math.min(2, cw / 4)}" fill="${fill}"/><rect x="${cx - cw / 2}" y="${cy + ch * .55}" width="${cw}" height="${Math.max(.8, ch * .12)}" fill="#000" fill-opacity=".25"/>`;
     const shine = `<rect x="${x + w * .14}" y="${y + h * .08}" width="${Math.max(1, w * .06)}" height="${h * .78}" rx="1" fill="#fff" fill-opacity=".35"/>`;
-    const shade = `<rect x="${x}" y="${120 - h * .06}" width="${w}" height="${h * .06}" fill="#000" fill-opacity=".25"/>`;
+    const shade = `<rect x="${x}" y="${H - h * .06}" width="${w}" height="${h * .06}" fill="#000" fill-opacity=".25"/>`;
     let g = "";
     switch (kind) {
       case "hammered": g = body("url(#fk-pewter)", w * .3) + body("url(#fk-hammer)", w * .3) + cap("url(#fk-pewterDark)") + shine; break;
@@ -835,12 +839,12 @@ function flaskRow(W) {
       case "engine": g = body("url(#fk-silver)", w * .08) + `<rect x="${x + w * .22}" y="${y + h * .08}" width="${w * .7}" height="${h * .84}" fill="url(#fk-engine)"/><rect x="${x + w * .32}" y="${y + h * .1}" width="${w * .1}" height="${h * .16}" fill="#fff" fill-opacity=".45"/>` + cap(); break;
       case "greenLeather": g = body("url(#fk-green)", w * .14) + `<rect x="${x}" y="${y}" width="${w}" height="${h * .11}" rx="${w * .14}" fill="url(#fk-silver)"/><path d="M${x + w * .3} ${y + h * .1} Q${cx} ${y + h * .45} ${x + w * .72} ${y + h * .1}" stroke="#0b130e" stroke-width="${w * .08}" fill="none"/>` + `<rect x="${x + 2}" y="${y + h * .14}" width="${w - 4}" height="${h * .82}" rx="${w * .1}" fill="none" stroke="#6d8a73" stroke-opacity=".35" stroke-width=".6" stroke-dasharray="1.2 1"/>` + cap(); break;
       case "brownCup": case "brownCupSmall": { const split = kind === "brownCup" ? .55 : .58, hy = y + h * (1 - split);
-        g = body("url(#fk-brown)", w * .3) + `<rect x="${x + w * .03}" y="${hy}" width="${w * .94}" height="${120 - hy}" rx="${w * .08}" fill="${kind === "brownCup" ? "url(#fk-silver)" : "url(#fk-pewterDark)"}"/><rect x="${x + w * .03}" y="${hy}" width="${w * .94}" height="1.4" fill="#000" fill-opacity=".35"/>` +
+        g = body("url(#fk-brown)", w * .3) + `<rect x="${x + w * .03}" y="${hy}" width="${w * .94}" height="${H - hy}" rx="${w * .08}" fill="${kind === "brownCup" ? "url(#fk-silver)" : "url(#fk-pewterDark)"}"/><rect x="${x + w * .03}" y="${hy}" width="${w * .94}" height="1.4" fill="#000" fill-opacity=".35"/>` +
           `<rect x="${x + 2}" y="${y + 3}" width="${w - 4}" height="${hy - y - 5}" rx="${w * .26}" fill="none" stroke="#d9a070" stroke-opacity=".35" stroke-width=".6" stroke-dasharray="1.2 1"/>` + (kind === "brownCup" ? cap("url(#fk-pewterDark)", true) : cap("url(#fk-pewter)")); break; }
-      case "greenSmall": g = body("url(#fk-green)", w * .1) + `<rect x="${x}" y="${y}" width="${w}" height="${h * .08}" fill="url(#fk-silver)"/><rect x="${x}" y="${120 - h * .06}" width="${w}" height="${h * .06}" fill="url(#fk-silver)"/>` + cap(); break;
+      case "greenSmall": g = body("url(#fk-green)", w * .1) + `<rect x="${x}" y="${y}" width="${w}" height="${h * .08}" fill="url(#fk-silver)"/><rect x="${x}" y="${H - h * .06}" width="${w}" height="${h * .06}" fill="url(#fk-silver)"/>` + cap(); break;
       case "silverLeather": g = body("url(#fk-silver)", w * .06) + `<rect x="${x + w * .72}" y="${y + h * .04}" width="${w * .28}" height="${h * .92}" fill="url(#fk-brown)"/><rect x="${x + w * .1}" y="${y + h * .35}" width="${w * .05}" height="${h * .3}" fill="#fff" fill-opacity=".5"/>` + cap(); break;
     }
-    out += `<g>${g}${shade}</g>`;
+    out += `<g>${g}${shade}</g>`; cursor += w + gap;
   }
   return out;
 }
@@ -851,7 +855,62 @@ const SVG = {
   tealight2: [30,30,`<path d="M3 6h24l-3 22H6z" fill="#b9bcc2"/><path d="M3 6h24" stroke="#e4e6ea" stroke-width="2"/><g fill="#5b5f66"><path d="M11 18c-3-2-4-3.5-4-5a2 2 0 0 1 4-.6 2 2 0 0 1 4 .6c0 1.5-1 3-4 5z"/><path d="M20 22c-2.2-1.5-3-2.6-3-3.7a1.5 1.5 0 0 1 3-.4 1.5 1.5 0 0 1 3 .4c0 1.1-.8 2.2-3 3.7z"/></g>`],
   socket: [34,38,`<rect x="1" y="1" width="32" height="32" rx="3" fill="#e9e8e4"/><circle cx="17" cy="17" r="10" fill="#d4d2cc"/><circle cx="13" cy="17" r="1.8" fill="#333"/><circle cx="21" cy="17" r="1.8" fill="#333"/><path d="M17 33v5" stroke="#111" stroke-width="3"/>`],
   lamp: [78,236,`<defs><linearGradient id="teak" x1="0" x2="1"><stop offset="0" stop-color="#7d4a1f"/><stop offset=".42" stop-color="#dba060"/><stop offset="1" stop-color="#6e3e18"/></linearGradient><linearGradient id="shade" x1="0" x2="1"><stop offset="0" stop-color="#4672a8"/><stop offset=".5" stop-color="#6f9bd0"/><stop offset="1" stop-color="#3b6292"/></linearGradient></defs><path d="M20 2h36l14 64H6z" fill="url(#shade)"/><path d="M20 2h36" stroke="#2f557f" stroke-width="2"/><rect x="35" y="66" width="6" height="12" fill="#c9c3b5"/><path d="M38 76c-26 30-26 112 0 156 26-44 26-126 0-156z" fill="url(#teak)"/><path d="M38 84c-12 24-12 80 0 132" stroke="#f1c48a" stroke-width="2" fill="none" opacity=".5"/><rect x="56" y="118" width="22" height="10" rx="2" fill="#8d8f94"/><rect x="70" y="108" width="8" height="30" rx="2" fill="#6d6f74"/><path d="M38 232c0 2 0 4 2 4" stroke="#222" stroke-width="2" fill="none"/>`],
-  elephant: [150,92,`<defs><pattern id="zig" width="10" height="8" patternUnits="userSpaceOnUse"><rect width="10" height="8" fill="#e8343b"/><path d="M0 6l2.5-4 2.5 4 2.5-4 2.5 4" stroke="#2d3fa8" stroke-width="1.6" fill="none"/><path d="M0 8l2.5-4 2.5 4 2.5-4 2.5 4" stroke="#fff" stroke-width=".8" fill="none"/></pattern><radialGradient id="wood" cx=".4" cy=".35"><stop offset="0" stop-color="#9a5a2e"/><stop offset="1" stop-color="#4c2810"/></radialGradient></defs><g transform="translate(0,6)"><path d="M10 44c2-14 14-22 30-22h12c10 0 16 6 18 14l4-20c2-10 10-14 14-10-6 2-8 8-8 14l-4 26c-2 6-8 8-12 8v30h-8V68h-6v18h-8V68H30v18h-8V68h-6v18H8V56c0-4 0-8 2-12z" fill="url(#zig)"/><path d="M58 30c-6-2-10 4-8 10" fill="none" stroke="#2d3fa8" stroke-width="2"/><circle cx="64" cy="34" r="1.8" fill="#111"/><path d="M8 52c-6 2-8 8-6 12" stroke="#e8343b" stroke-width="3" fill="none"/></g><g transform="translate(86,36)"><ellipse cx="30" cy="28" rx="28" ry="18" fill="url(#wood)"/><path d="M6 24c-6 2-8 12-4 22 2 4 6 4 6 0-2-6-2-12 2-16z" fill="#5e3416"/><circle cx="12" cy="16" r="10" fill="#6a3a18"/><path d="M14 30c10-4 26-4 36 2" stroke="#c48a52" stroke-width="1.5" fill="none" stroke-dasharray="2 2"/><path d="M18 22c8-6 24-6 32 0" stroke="#c48a52" stroke-width="1.5" fill="none"/><rect x="8" y="40" width="8" height="14" fill="#4c2810"/><rect x="22" y="42" width="8" height="12" fill="#4c2810"/><rect x="38" y="42" width="8" height="12" fill="#4c2810"/><rect x="48" y="40" width="8" height="14" fill="#4c2810"/></g>`],
+  elephant: [152,114,`<svg viewBox="120 30 1070 805" width="152" height="114" overflow="visible"><defs>
+<pattern id="el-wax" width="90" height="60" patternUnits="userSpaceOnUse" patternTransform="rotate(-18) scale(1.7)"><rect width="90" height="60" fill="#ef4a2c"/>
+<path d="M0 10 C20 2 40 18 60 10 S90 6 90 6" stroke="#2c2896" stroke-width="7" fill="none"/><path d="M0 30 C25 22 45 40 70 30 S90 26 90 26" stroke="#2c2896" stroke-width="5" fill="none"/>
+<path d="M0 22 C22 16 42 30 64 22" stroke="#f4eee8" stroke-width="2.5" fill="none"/><path d="M0 48 C18 40 46 56 90 46" stroke="#2c2896" stroke-width="8" fill="none"/><path d="M8 55 C30 50 50 60 80 55" stroke="#7a1d14" stroke-width="2" fill="none"/></pattern>
+<pattern id="el-zig" width="36" height="22" patternUnits="userSpaceOnUse" patternTransform="rotate(28) scale(1.6)"><rect width="36" height="22" fill="#f2ece6"/>
+<path d="M0 6 L9 1 L18 6 L27 1 L36 6" stroke="#2c2896" stroke-width="4.5" fill="none"/><path d="M0 15 L9 10 L18 15 L27 10 L36 15" stroke="#2c2896" stroke-width="4.5" fill="none"/><path d="M0 21 L9 17 L18 21 L27 17 L36 21" stroke="#3b35b0" stroke-width="2.5" fill="none"/></pattern>
+<radialGradient id="el-wood" cx=".42" cy=".35" r=".75"><stop offset="0" stop-color="#a86a3c"/><stop offset=".55" stop-color="#7a4523"/><stop offset="1" stop-color="#3e2010"/></radialGradient>
+<radialGradient id="el-woodHead" cx=".35" cy=".4" r=".7"><stop offset="0" stop-color="#b47546"/><stop offset="1" stop-color="#5a3018"/></radialGradient>
+<linearGradient id="el-fold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
+</defs>
+<ellipse cx="460" cy="828" rx="330" ry="14" fill="#000" opacity=".35"/><ellipse cx="930" cy="824" rx="250" ry="14" fill="#000" opacity=".35"/>
+<!-- carved wooden elephant, behind on the right, head to the left -->
+<g>
+ <path d="M1090 760 C1100 800 1095 815 1150 818 C1160 790 1150 770 1150 740 Z" fill="#4a2612"/>
+ <path d="M800 470 C830 410 930 395 1040 420 C1130 440 1180 520 1175 610 C1172 700 1150 750 1120 760 L850 765 C810 750 790 700 790 640 Z" fill="url(#el-wood)"/>
+ <path d="M820 720 C815 770 818 800 830 808 L905 810 C912 790 905 760 905 730 Z" fill="#5a3018"/><path d="M822 800 h86" stroke="#2c160a" stroke-width="6"/>
+ <path d="M1060 740 C1058 780 1060 815 1070 822 L1140 822 C1146 800 1140 770 1138 742 Z" fill="#5a3018"/><path d="M1064 814 h80" stroke="#2c160a" stroke-width="6"/>
+ <path d="M700 640 C695 680 698 705 708 712 L760 712 C766 690 762 660 760 635 Z" fill="#4e2914"/>
+ <path d="M805 440 C880 420 1000 425 1090 470 C1120 560 1110 680 1080 745 C990 765 880 760 820 745 C800 650 795 540 805 440 Z" fill="#8a5129"/>
+ <path d="M805 440 C880 420 1000 425 1090 470 C1120 560 1110 680 1080 745 C990 765 880 760 820 745 C800 650 795 540 805 440 Z" fill="none" stroke="#3a1d0c" stroke-width="6"/>
+ <path d="M830 470 C900 452 1000 456 1070 490" stroke="#c48a55" stroke-width="5" fill="none" stroke-dasharray="14 9"/>
+ <path d="M828 720 C900 735 1000 735 1070 715" stroke="#3a1d0c" stroke-width="5" fill="none"/>
+ <path d="M840 735 l14 22 14-22 14 22 14-22 14 22 14-22 14 22 14-22 14 22 14-22 14 22 14-22 14 22 14-22" stroke="#3a1d0c" stroke-width="4" fill="none"/>
+ <g transform="translate(960 585)" stroke="#3a1d0c" stroke-width="5" fill="none"><circle r="46"/><circle r="14" fill="#5a3018"/>${[0,45,90,135,180,225,270,315].map(a => `<ellipse rx="10" ry="22" transform="rotate(${a}) translate(0 -30)"/>`).join("")}</g>
+ <path d="M860 520 C880 500 900 530 885 545 M1030 520 c20-18 40 12 22 28 M870 660 c22-14 40 14 20 26 M1030 660 c20-16 38 12 20 26" stroke="#3a1d0c" stroke-width="4" fill="none"/>
+ <path d="M840 490 C900 640 1010 640 1080 500" stroke="#c48a55" stroke-opacity=".5" stroke-width="3" fill="none"/>
+ <path d="M800 420 C760 370 690 380 676 450 C668 500 690 540 720 560 C730 590 722 625 712 650 L748 652 C760 610 770 580 790 560 Z" fill="url(#el-woodHead)"/>
+ <path d="M720 560 C700 520 690 470 712 420 C722 392 744 372 760 362" stroke="#5a3018" stroke-width="26" stroke-linecap="round" fill="none"/>
+ <path d="M760 362 C775 356 790 366 782 382" stroke="#5a3018" stroke-width="18" stroke-linecap="round" fill="none"/>
+ <path d="M706 410 c-8 40 -6 90 14 140" stroke="#2f170a" stroke-width="2.5" fill="none" stroke-dasharray="3 10"/>
+ <path d="M790 430 C840 420 880 470 870 520 C862 560 830 570 800 560 Z" fill="#6a381a" stroke="#3a1d0c" stroke-width="4"/>
+ <path d="M808 455 c30 0 46 30 40 60" stroke="#c48a55" stroke-opacity=".6" stroke-width="3" fill="none"/>
+ <ellipse cx="745" cy="468" rx="9" ry="6" fill="#1c0e06"/><path d="M732 455 c8-6 20-6 26 2" stroke="#2f170a" stroke-width="3" fill="none"/>
+ <path d="M686 520 c-14 6 -20 14 -18 22" stroke="#efe3cf" stroke-width="7" stroke-linecap="round" fill="none"/>
+</g>
+<!-- fabric elephant in wax print, in front on the left, trunk raised -->
+<g>
+ <path d="M150 470 C135 470 128 462 126 456" stroke="#2c2896" stroke-width="7" stroke-linecap="round" fill="none"/>
+ <path d="M240 600 L235 715 C240 722 270 722 280 715 L282 600 Z" fill="url(#el-zig)"/><path d="M235 712 h46" stroke="#1f1c70" stroke-width="5"/>
+ <path d="M465 585 L470 755 C480 768 530 768 540 755 L528 580 Z" fill="url(#el-wax)"/><path d="M470 752 h70" stroke="#7a1d14" stroke-width="5"/>
+ <path d="M150 395 C200 368 280 360 340 372 C400 340 470 300 560 292 L600 300 C640 330 640 420 600 470 C590 520 560 570 520 590 C470 610 300 612 210 605 C170 600 150 560 146 500 Z" fill="url(#el-wax)"/>
+ <path d="M150 395 C200 368 280 360 340 372 C400 340 470 300 560 292 L600 300 C640 330 640 420 600 470 C590 520 560 570 520 590 C470 610 300 612 210 605 C170 600 150 560 146 500 Z" fill="url(#el-fold)"/>
+ <path d="M155 400 C175 396 200 420 205 460 C210 520 190 560 160 580 C150 540 146 460 155 400 Z" fill="url(#el-zig)" opacity=".95"/>
+ <path d="M165 600 L170 742 C175 755 205 756 214 744 L218 600 Z" fill="url(#el-wax)"/><path d="M170 740 h44" stroke="#7a1d14" stroke-width="5"/>
+ <path d="M385 590 L392 815 C400 830 465 830 475 815 L472 588 Z" fill="url(#el-zig)"/><path d="M393 812 h82" stroke="#1f1c70" stroke-width="6"/>
+ <path d="M398 600 L404 812 M440 600 L444 812" stroke="#ef4a2c" stroke-width="7" opacity=".85"/>
+ <path d="M330 375 C380 360 440 345 500 340 C530 380 535 470 520 545 C470 565 400 560 345 540 C325 480 322 420 330 375 Z" fill="url(#el-zig)"/>
+ <path d="M330 375 C380 360 440 345 500 340 C530 380 535 470 520 545 C470 565 400 560 345 540 C325 480 322 420 330 375 Z" fill="url(#el-fold)" stroke="#1f1c70" stroke-opacity=".5" stroke-width="3"/>
+ <path d="M440 330 C480 300 540 290 600 295 C650 300 680 330 682 370 C684 420 650 440 610 440 C560 440 520 420 495 395 Z" fill="url(#el-wax)"/>
+ <path d="M568 308 C560 245 532 185 506 125 C494 95 490 62 500 42 L528 40 C532 72 548 112 574 160 C604 214 642 250 660 302 Z" fill="url(#el-zig)"/>
+ <path d="M500 42 L528 40 C530 60 534 80 542 100 L508 110 C498 88 494 62 500 42 Z" fill="#ef4a2c"/><path d="M520 150 C540 152 556 146 566 138 L580 170 C566 180 548 184 530 182 Z" fill="#ef4a2c"/><path d="M556 236 C578 236 600 228 614 218 L628 248 C612 258 590 264 570 264 Z" fill="#ef4a2c"/>
+ <path d="M640 400 C680 395 720 388 768 384 C790 384 790 400 770 404 C730 410 690 420 652 432 Z" fill="url(#el-wax)"/>
+ <path d="M650 420 C690 418 728 428 760 436 C772 440 770 452 756 450 C720 446 690 440 650 440 Z" fill="url(#el-zig)"/>
+ <circle cx="618" cy="372" r="6" fill="#141018"/><path d="M606 360 c8-6 18-4 22 4" stroke="#1f1c70" stroke-width="3" fill="none"/>
+ <path d="M200 605 C300 615 440 612 525 588" stroke="#000" stroke-opacity=".3" stroke-width="5" fill="none"/>
+</g></svg>`],
   candle: [40,56,`<rect x="4" y="8" width="32" height="46" rx="4" fill="#f4f0e6" opacity=".9"/><rect x="4" y="8" width="32" height="46" rx="4" fill="none" stroke="#c9c3b5"/><path d="M20 2c3 4 3 7 0 9-3-2-3-5 0-9z" fill="#ffb648"/>`],
   potStripe: [42,40,`<path d="M3 4h36l-4 34H7z" fill="#efe9dc"/><g stroke="#c43a2f" stroke-width="4"><path d="M4 12h34"/><path d="M5 22h32"/><path d="M6 32h30"/></g>`],
   potPattern: [44,46,`<path d="M3 6h38l-4 38H7z" fill="#e7eef2"/><g fill="none" stroke="#2f5d8a" stroke-width="2"><path d="M6 14q5-5 10 0t10 0 10 0"/><path d="M6 26q5-5 10 0t10 0 10 0"/><path d="M7 37q5-5 10 0t10 0 9 0"/></g><path d="M22 6c-2-8 6-10 10-6" stroke="#4d7d3a" stroke-width="3" fill="none"/>`],
@@ -866,7 +925,7 @@ const SVG = {
   cars2: [250,34, (() => {     const vintage = (x, c) => `<path d="M${x} 28v-5c0-2 1-3 3-3h3l4-7h12l4 7h4c2 0 3 1 3 3v5z" fill="${c}"/><rect x="${x+9}" y="14" width="6" height="5" fill="#d5ecf7"/><rect x="${x+17}" y="14" width="6" height="5" fill="#d5ecf7"/><circle cx="${x+7}" cy="29" r="3.4" fill="#1b1b1b"/><circle cx="${x+26}" cy="29" r="3.4" fill="#1b1b1b"/><circle cx="${x+7}" cy="29" r="1.4" fill="#ddd"/><circle cx="${x+26}" cy="29" r="1.4" fill="#ddd"/>`;     const jeep = (x) => `<path d="M${x} 28v-9h6l2-6h14v15z" fill="#5b6b3a"/><rect x="${x+22}" y="17" width="10" height="11" fill="#5b6b3a"/><rect x="${x+9}" y="10" width="2" height="4" fill="#333"/><circle cx="${x+7}" cy="29" r="3.6" fill="#1b1b1b"/><circle cx="${x+25}" cy="29" r="3.6" fill="#1b1b1b"/>`;     const fire = (x) => `<rect x="${x}" y="12" width="44" height="15" rx="2" fill="#c62828"/><rect x="${x+32}" y="8" width="12" height="10" rx="2" fill="#c62828"/><rect x="${x+34}" y="10" width="7" height="5" fill="#d5ecf7"/><path d="M${x+2} 10h30" stroke="#e0e0e0" stroke-width="2"/><path d="M${x+4} 10v-3M${x+12} 10v-3M${x+20} 10v-3M${x+28} 10v-3" stroke="#e0e0e0" stroke-width="1.5"/><g fill="#1b1b1b"><circle cx="${x+8}" cy="29" r="3.4"/><circle cx="${x+36}" cy="29" r="3.4"/></g>`;     const van = (x) => `<rect x="${x}" y="10" width="34" height="18" rx="7" fill="#7fb7c9"/><rect x="${x}" y="19" width="34" height="9" rx="3" fill="#f2efe6"/><path d="M${x+17} 10v18" stroke="#f2efe6" stroke-width="1.5"/><rect x="${x+4}" y="13" width="8" height="5" fill="#d5ecf7"/><rect x="${x+22}" y="13" width="8" height="5" fill="#d5ecf7"/><circle cx="${x+7}" cy="29" r="3.4" fill="#1b1b1b"/><circle cx="${x+27}" cy="29" r="3.4" fill="#1b1b1b"/>`;     return vintage(2, "#1d1d1d") + jeep(40) + van(78) + fire(118) + vintage(168, "#8e2b2b") + vintage(206, "#d8cfa9");   })()],
   cars: [380,34, (() => {     const car = (x, c, roof) => `<path d="M${x} 28v-6c0-2 2-4 5-4l5-4h10l6 4h3c2 0 3 2 3 4v6z" fill="${c}"/><path d="M${x+11} 15h8l4 3h-14z" fill="${roof}" opacity=".85"/><circle cx="${x+7}" cy="29" r="3" fill="#1b1b1b"/><circle cx="${x+24}" cy="29" r="3" fill="#1b1b1b"/>`;     const truck = (x) => `<rect x="${x}" y="6" width="64" height="20" rx="1" fill="#f3f1ea" stroke="#c0392b" stroke-width="2"/><text x="${x+32}" y="19" font-size="7" font-family="Arial" font-weight="700" fill="#c0392b" text-anchor="middle">EXPRESS SERVICE</text><path d="M${x+66} 28V10h10l6 8v10z" fill="#2c4f9e"/><rect x="${x+70}" y="12" width="7" height="5" fill="#cfe6f5"/><g fill="#1b1b1b"><circle cx="${x+10}" cy="29" r="3.4"/><circle cx="${x+20}" cy="29" r="3.4"/><circle cx="${x+54}" cy="29" r="3.4"/><circle cx="${x+76}" cy="29" r="3.4"/></g>`;     const bus = (x) => `<rect x="${x}" y="8" width="44" height="19" rx="4" fill="#3faa4b"/><rect x="${x}" y="8" width="44" height="6" rx="3" fill="#f2d23c"/><g fill="#d5ecf7">${[4,13,22,31].map(d => `<rect x="${x+d}" y="15" width="7" height="5"/>`).join("")}</g><circle cx="${x+9}" cy="29" r="3.4" fill="#1b1b1b"/><circle cx="${x+35}" cy="29" r="3.4" fill="#1b1b1b"/>`;     const cs = [["#b3262e","#e8e3d6"],["#2e5aa8","#dfe7f1"],["#f4f1e8","#8aa0b8"],["#e3a21a","#3a3a3a"],["#f0c33c","#2a2a2a"],["#d9682a","#f4f1e8"],["#ececec","#c0392b"],["#1f2f55","#c9ced6"]];     let s = "", x = 2; for (const [c, r] of cs) { s += car(x, c, r); x += 30; }     return s + truck(x + 4) + bus(x + 92);   })()],
   picture: [64,66,`<g>${[0,1,2,3,4,5,6,7,8].map(i => `<rect x="${6 + (i % 3) * 2 - (i % 2) * 3}" y="${58 - i * 7}" width="${50 - (i % 4) * 3}" height="7" rx="1" fill="${i % 2 ? '#e9e6df' : '#d9d5cb'}" stroke="#b8b2a4" stroke-width=".6"/>`).join("")}</g>`],
-  flasks: [640,120, flaskRow(640)],
+  flasks: [640,FLASK_H, flaskRow(640)],
   potGrey: [52,54,`<rect x="2" y="4" width="48" height="50" rx="5" fill="#4a4644"/><ellipse cx="26" cy="6" rx="23" ry="4" fill="#5a5552"/><ellipse cx="26" cy="7" rx="16" ry="2.5" fill="#e8e4dc"/>`],
   cards: [36,16,`<rect x="1" y="2" width="34" height="14" rx="1" fill="#1f5a52"/><rect x="5" y="4" width="14" height="6" fill="#d8c79a"/>`],
   jug: [62,104,`<rect x="6" y="66" width="50" height="38" rx="3" fill="#202124"/><path d="M8 70V18c0-10 8-16 23-16s23 6 23 16v52z" fill="#c9d6dc" opacity=".3" stroke="#dbe6ea" stroke-width="1.5"/><rect x="18" y="52" width="26" height="18" fill="#f4efe2"/>`],
@@ -1102,7 +1161,7 @@ function placePainting() {
 function fitShelves() {
   for (const sh of document.querySelectorAll(".shelf")) {
     const fl = sh.querySelector('[data-fill="flasks"]');
-    if (fl) { const cs0 = getComputedStyle(sh); const W = Math.floor(sh.clientWidth - parseFloat(cs0.paddingLeft) - parseFloat(cs0.paddingRight) - 8); fl.innerHTML = `<svg width="${W}" height="120" viewBox="0 0 ${W} 120" aria-hidden="true">${flaskRow(W)}</svg>`; continue; }
+    if (fl) { const cs0 = getComputedStyle(sh); const W = Math.floor(sh.clientWidth - parseFloat(cs0.paddingLeft) - parseFloat(cs0.paddingRight) - 8); fl.innerHTML = `<svg width="${W}" height="${FLASK_H}" viewBox="0 0 ${W} ${FLASK_H}" aria-hidden="true">${flaskRow(W)}</svg>`; continue; }
     const sp = [...sh.querySelectorAll(":scope > .spine")];
     if (!sp.length) continue;
     sp.forEach(e => { if (!e.dataset.w) e.dataset.w = parseFloat(e.style.width); e.style.width = e.dataset.w + "px"; });
