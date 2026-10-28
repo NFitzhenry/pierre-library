@@ -487,7 +487,7 @@ html { background: #2c2d32; }
   <section id="v-shelves" class="view">
     <div class="zoombar">
       <div class="notches" role="group" aria-label="Zoom">
-        <button type="button" id="zoomOut" class="zb" data-z="0" data-i18n="z0"></button><button type="button" class="zb" data-z="1" data-i18n="z1"></button><button type="button" class="zb" data-z="2" data-i18n="z2"></button>
+        <button type="button" id="zoomOut" class="zb" data-z="0" data-i18n="z0"></button><button type="button" class="zb" data-z="1" data-i18n="z2"></button>
       </div>
       <span class="zhint" id="zhint" hidden></span>
     </div>
@@ -1555,7 +1555,7 @@ renderFigures();
 // The wall is laid out once at full size and only its scale changes, so nothing is re-measured.
 const roomEl = document.getElementById("room"), zoomBtn = document.getElementById("zoomOut"), zhint = document.getElementById("zhint");
 const notchBtns = [...document.querySelectorAll(".notches .zb")];
-const levels = () => [fitScale, Math.sqrt(fitScale), 1];
+const levels = () => [fitScale, 1];
 var overview = true, scaleNow = 1, fitScale = 1;
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function sizeNiche() {
