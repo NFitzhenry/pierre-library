@@ -789,12 +789,59 @@ const OBJECTS = [
   {c:"Bookcase 2", o:"Right column", s:3, after:"ordre du jour", k:"potGrey", label:"Concrete pot"},
   {c:"Bookcase 2", o:"Right column", s:4, after:"mur jaune", k:"woodwick", label:"Candle with dried flowers"},
 ];
-const flask = (x, w, h, body, cap) => `<rect x="${x}" y="${120-h}" width="${w}" height="${h}" rx="${w*0.25}" fill="${body}"/><rect x="${x+w*0.3}" y="${120-h-9}" width="${w*0.4}" height="10" rx="2" fill="${cap}"/>`;
-
+// Hip flasks on Bookcase 2, left column, shelf 2: drawn from the photograph, left to right.
+// Each entry: [x0, x1, top of body, cap top, cap width, kind]; units are photo pixels, shelf line at 465.
+const FLASKS = [
+  [105, 255, 238, 228, 34, "hammered"], [262, 410, 238, 186, 40, "wicker"], [432, 560, 262, 200, 60, "glass"],
+  [568, 660, 286, 268, 26, "pewter"], [662, 785, 280, 262, 28, "silverCurve"], [787, 918, 266, 190, 58, "glassTall"],
+  [920, 1048, 264, 246, 32, "engine"], [1048, 1148, 280, 262, 28, "pewterDark"], [1155, 1270, 262, 210, 34, "greenLeather"],
+  [1280, 1398, 250, 200, 50, "brownCup"], [1388, 1492, 346, 318, 26, "greenSmall"], [1493, 1600, 256, 238, 42, "brownCupSmall"],
+  [1610, 1725, 312, 288, 26, "silverLeather"]
+];
 function flaskRow(W) {
-  const pal = [["#9ea2a6","#cfd2d5"],["#b88a52","#b0b4b8"],["#c9dde6","#9ba0a6"],["#a2a6aa","#cfd2d5"],["#b5b9bd","#d8dbde"],["#d6e4ea","#a0a4a8"],["#c3c6c9","#e0e2e4"],["#2f4a3a","#b0b4b8"],["#6b3a24","#9ba0a6"],["#bfc3c6","#e3e5e7"],["#8a5a34","#c0c3c6"],["#2f5a44","#c9ccd0"]];
-  const n = 22, slot = W / n; let out = "";
-  for (let i = 0; i < n; i++) { const w = Math.min(slot - 6, 14 + (i * 7) % 12), h = 42 + (i * 13) % 34, [b, c] = pal[i % pal.length]; out += flask(i * slot + (slot - w) / 2, w, h, b, c); }
+  // Heights follow the photo; the row is spread to the width of the drawn shelf, as the flasks fill the real shelf end to end.
+  const base = 465, span = 1725 - 105, sc = Math.min(108 / (base - 186), (W - 10) / span), sx = (W - 16) / span, kw = Math.min(1.35, sx / sc * .92);
+  const Y = y => 120 - (base - y) * sc;
+  const defs = `<defs>
+    <linearGradient id="fk-silver" x1="0" x2="1"><stop offset="0" stop-color="#6d7277"/><stop offset=".18" stop-color="#e9ecee"/><stop offset=".34" stop-color="#a9aeb3"/><stop offset=".62" stop-color="#cfd3d6"/><stop offset=".86" stop-color="#7b8085"/><stop offset="1" stop-color="#4b4f53"/></linearGradient>
+    <linearGradient id="fk-pewter" x1="0" x2="1"><stop offset="0" stop-color="#55595c"/><stop offset=".25" stop-color="#a7aaab"/><stop offset=".55" stop-color="#8a8d8f"/><stop offset=".85" stop-color="#5d6164"/><stop offset="1" stop-color="#3f4245"/></linearGradient>
+    <linearGradient id="fk-pewterDark" x1="0" x2="1"><stop offset="0" stop-color="#3f4346"/><stop offset=".3" stop-color="#8d9194"/><stop offset=".7" stop-color="#5f6366"/><stop offset="1" stop-color="#34373a"/></linearGradient>
+    <linearGradient id="fk-glass" x1="0" x2="1"><stop offset="0" stop-color="#b9c4c9" stop-opacity=".55"/><stop offset=".12" stop-color="#ffffff" stop-opacity=".35"/><stop offset=".3" stop-color="#7d888e" stop-opacity=".18"/><stop offset=".8" stop-color="#9aa6ab" stop-opacity=".22"/><stop offset="1" stop-color="#d7dee1" stop-opacity=".55"/></linearGradient>
+    <linearGradient id="fk-green" x1="0" x2="1"><stop offset="0" stop-color="#16261d"/><stop offset=".3" stop-color="#2f4a3a"/><stop offset=".6" stop-color="#25392d"/><stop offset="1" stop-color="#111c16"/></linearGradient>
+    <linearGradient id="fk-brown" x1="0" x2="1"><stop offset="0" stop-color="#4a2716"/><stop offset=".3" stop-color="#9a5a36"/><stop offset=".6" stop-color="#7c4428"/><stop offset="1" stop-color="#3d2012"/></linearGradient>
+    <linearGradient id="fk-wickerShade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset=".3" stop-color="#fff" stop-opacity=".08"/><stop offset=".7" stop-color="#000" stop-opacity=".05"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient>
+    <pattern id="fk-wicker" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="3" fill="#a8743f"/><rect width="2.6" height="1.5" fill="#c99358"/><rect x="2" y="1.5" width="2.6" height="1.5" fill="#bd8549"/><rect x="-.6" y="1.5" width="2" height="1.5" fill="#bd8549"/></pattern>
+    <pattern id="fk-hammer" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#fff" fill-opacity=".12"/><circle cx="4" cy="3.8" r="1.1" fill="#000" fill-opacity=".14"/></pattern>
+    <pattern id="fk-engine" width="1.6" height="4" patternUnits="userSpaceOnUse"><rect width=".7" height="4" fill="#000" fill-opacity=".14"/></pattern>
+  </defs>`;
+  let out = defs;
+  for (const [x0, x1, top, capTop, capW, kind] of FLASKS) {
+    const w = (x1 - x0) * sc * kw, x = 8 + ((x0 + x1) / 2 - 105) * sx - w / 2 + (x0 === 105 ? w * 0 : 0), y = Y(top), h = 120 - y, cx = x + w / 2, cw = capW * sc, cy = Y(capTop), ch = y - cy + 1;
+    const r = Math.min(w * .32, h * .25);
+    const body = (fill, rx = r) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${fill}"/>`;
+    const cap = (fill = "url(#fk-silver)", dome = false) => dome
+      ? `<path d="M${cx - cw / 2} ${y + 1} V${cy + cw * .4} Q${cx - cw / 2} ${cy} ${cx} ${cy} Q${cx + cw / 2} ${cy} ${cx + cw / 2} ${cy + cw * .4} V${y + 1} Z" fill="${fill}"/>`
+      : `<rect x="${cx - cw / 2}" y="${cy}" width="${cw}" height="${ch}" rx="${Math.min(2, cw / 4)}" fill="${fill}"/><rect x="${cx - cw / 2}" y="${cy + ch * .55}" width="${cw}" height="${Math.max(.8, ch * .12)}" fill="#000" fill-opacity=".25"/>`;
+    const shine = `<rect x="${x + w * .14}" y="${y + h * .08}" width="${Math.max(1, w * .06)}" height="${h * .78}" rx="1" fill="#fff" fill-opacity=".35"/>`;
+    const shade = `<rect x="${x}" y="${120 - h * .06}" width="${w}" height="${h * .06}" fill="#000" fill-opacity=".25"/>`;
+    let g = "";
+    switch (kind) {
+      case "hammered": g = body("url(#fk-pewter)", w * .3) + body("url(#fk-hammer)", w * .3) + cap("url(#fk-pewterDark)") + shine; break;
+      case "wicker": g = body("url(#fk-wicker)", w * .28) + body("url(#fk-wickerShade)", w * .28) + `<rect x="${x + w * .1}" y="${y - 2}" width="${w * .8}" height="4" rx="2" fill="url(#fk-silver)"/>` + cap("url(#fk-silver)", true); break;
+      case "glass": case "glassTall": g = body("url(#fk-glass)", kind === "glass" ? w * .34 : w * .12) + `<rect x="${x + .5}" y="${y + .5}" width="${w - 1}" height="${h - 1}" rx="${kind === "glass" ? w * .34 : w * .12}" fill="none" stroke="#dfe6e9" stroke-opacity=".6" stroke-width=".8"/>` + shine + cap(kind === "glass" ? "url(#fk-pewterDark)" : "url(#fk-silver)"); break;
+      case "pewter": g = body("url(#fk-pewter)", w * .38) + cap("url(#fk-pewter)") + shine; break;
+      case "pewterDark": g = body("url(#fk-pewterDark)", w * .14) + cap("url(#fk-pewter)") + shine; break;
+      case "silverCurve": g = body("url(#fk-silver)", w * .12) + `<path d="M${x + w * .25} ${y + h * .1} Q${x + w * .55} ${y + h * .5} ${x + w * .25} ${y + h * .9}" stroke="#fff" stroke-opacity=".5" stroke-width="${w * .05}" fill="none"/>` + cap(); break;
+      case "engine": g = body("url(#fk-silver)", w * .08) + `<rect x="${x + w * .22}" y="${y + h * .08}" width="${w * .7}" height="${h * .84}" fill="url(#fk-engine)"/><rect x="${x + w * .32}" y="${y + h * .1}" width="${w * .1}" height="${h * .16}" fill="#fff" fill-opacity=".45"/>` + cap(); break;
+      case "greenLeather": g = body("url(#fk-green)", w * .14) + `<rect x="${x}" y="${y}" width="${w}" height="${h * .11}" rx="${w * .14}" fill="url(#fk-silver)"/><path d="M${x + w * .3} ${y + h * .1} Q${cx} ${y + h * .45} ${x + w * .72} ${y + h * .1}" stroke="#0b130e" stroke-width="${w * .08}" fill="none"/>` + `<rect x="${x + 2}" y="${y + h * .14}" width="${w - 4}" height="${h * .82}" rx="${w * .1}" fill="none" stroke="#6d8a73" stroke-opacity=".35" stroke-width=".6" stroke-dasharray="1.2 1"/>` + cap(); break;
+      case "brownCup": case "brownCupSmall": { const split = kind === "brownCup" ? .55 : .58, hy = y + h * (1 - split);
+        g = body("url(#fk-brown)", w * .3) + `<rect x="${x + w * .03}" y="${hy}" width="${w * .94}" height="${120 - hy}" rx="${w * .08}" fill="${kind === "brownCup" ? "url(#fk-silver)" : "url(#fk-pewterDark)"}"/><rect x="${x + w * .03}" y="${hy}" width="${w * .94}" height="1.4" fill="#000" fill-opacity=".35"/>` +
+          `<rect x="${x + 2}" y="${y + 3}" width="${w - 4}" height="${hy - y - 5}" rx="${w * .26}" fill="none" stroke="#d9a070" stroke-opacity=".35" stroke-width=".6" stroke-dasharray="1.2 1"/>` + (kind === "brownCup" ? cap("url(#fk-pewterDark)", true) : cap("url(#fk-pewter)")); break; }
+      case "greenSmall": g = body("url(#fk-green)", w * .1) + `<rect x="${x}" y="${y}" width="${w}" height="${h * .08}" fill="url(#fk-silver)"/><rect x="${x}" y="${120 - h * .06}" width="${w}" height="${h * .06}" fill="url(#fk-silver)"/>` + cap(); break;
+      case "silverLeather": g = body("url(#fk-silver)", w * .06) + `<rect x="${x + w * .72}" y="${y + h * .04}" width="${w * .28}" height="${h * .92}" fill="url(#fk-brown)"/><rect x="${x + w * .1}" y="${y + h * .35}" width="${w * .05}" height="${h * .3}" fill="#fff" fill-opacity=".5"/>` + cap(); break;
+    }
+    out += `<g>${g}${shade}</g>`;
+  }
   return out;
 }
 const SVG = {
