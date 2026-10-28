@@ -113,6 +113,7 @@ h1 i { font-weight: 500; color: var(--ink-soft); }
 header, .tools, .legend { position: relative; z-index: 6; }
 .room { position: relative; z-index: 1; }
 .case.bc2 { align-self: stretch; display: flex; flex-direction: column; }
+.case.bc2 .cols > .col { flex: 1 1 0; min-width: 0; }  /* the two columns of the second bookcase are the same width */
 .dining { margin-top: auto; display: flex; justify-content: center; padding-top: 40px; }
 .dining svg { display: block; width: 78%; height: auto; filter: drop-shadow(0 10px 10px #0008); }
 
