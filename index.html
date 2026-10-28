@@ -1314,7 +1314,7 @@ addEventListener("hashchange", route);
     const fr = ess.lang === "fr";
     const dec = {};
     g.forEach(b => { const y = 1974 + b.i; (dec[Math.floor(y / 10) * 10] ||= []).push([y, b]); });
-    ess.querySelector(".gonc").innerHTML = `<div class="seal"><b>G</b><div><a href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${fr ? "Prix_Goncourt" : "Prix_Goncourt"}" target="_blank" rel="noopener">${fr ? "Prix Goncourt, 1975 à 2013" : "Prix Goncourt, 1975 to 2013"}</a><small>${fr ? "Les 39 lauréats, dans l'ordre où Pierre les a rangés" : "The 39 winners, in the order Pierre shelved them"}</small></div></div>` +
+    ess.querySelector(".gonc").innerHTML = `<div class="seal"><b>G</b><div><a href="https://${fr ? "fr" : "en"}.wikipedia.org/wiki/${fr ? "Prix_Goncourt" : "Prix_Goncourt"}" target="_blank" rel="noopener">${fr ? "Prix Goncourt, 1975 à 2013" : "Prix Goncourt, 1975 to 2013"}</a></div></div>` +
       Object.entries(dec).map(([d, l]) => `<div class="dec"><i>${d}s</i><div class="yrs">${l.map(([y, b]) => item(b, y)).join("")}</div></div>`).join("");
     ess.querySelectorAll(".cvrow").forEach(r => { r.innerHTML = r.dataset.pick.split(";").map(find).filter(Boolean).map(b => (used.add(b.id), item(b))).join(""); });
     // author cards
