@@ -4,7 +4,7 @@ A catalogue of the 1,034 books on Pierre's two bookcases, read from photographs 
 
 **Open the catalogue:** https://nfitzhenry.github.io/pierre-library/
 
-The page draws both bookcases shelf by shelf. Hovering over or tapping a spine shows its catalogue card: author, title, series and number, publisher and year from the BnF catalogue, a cover where one was found, and the book's place on the shelf. The page has five views: the shelves, a sortable list, an index of authors, summary figures, and a description of the collection. It opens in French; an EN/FR switch sits on the catalogue card.
+The page draws both bookcases shelf by shelf. Hovering over or tapping a spine shows its catalogue card: author, title, series and number, publisher and year from the BnF catalogue, a cover where one was found, and the book's place on the shelf. The page has five views: the shelves, a sortable list, an index of authors, data, and a description of the collection. It opens in French; an EN/FR switch sits on the catalogue card.
 
 ## Contents
 
