@@ -1601,7 +1601,8 @@ function setScale(s, anchor, silent) {
   // inner width when scaled: let the room scroll over the scaled width
   walls.parentElement.style.setProperty("--sw", s >= 0.9999 ? "0px" : Math.floor(walls.scrollWidth * s) + "px");
   roomEl.scrollLeft = Math.max(0, wx * s - ax);
-  if (anchor && !silent) scrollTo({top: Math.max(0, pageTop + wy * s - ay), behavior: "instant"});
+  // keep the clicked point under the pointer: measure the room again, since its margin and height have just changed
+  if (anchor && !silent) { const newTop = roomEl.getBoundingClientRect().top + scrollY; scrollTo({top: Math.max(0, newTop + wy * s - anchor[1]), behavior: "instant"}); }
   const L = levels(); let near = 0; L.forEach((v, k) => { if (Math.abs(Math.log(s / v)) < Math.abs(Math.log(s / L[near]))) near = k; });
   notchBtns.forEach((bt, k) => bt.setAttribute("aria-pressed", k === near ? "true" : "false"));
 
