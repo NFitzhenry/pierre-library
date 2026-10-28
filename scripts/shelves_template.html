@@ -178,6 +178,10 @@ table.books td.loc { white-space: nowrap; font-family: var(--font-cond); }
 .tip .meta { font-size: .82rem; color: #4a4741; }
 .tip .meta a { color: #6a4a2c; }
 .tip.pinned { pointer-events: auto; }
+.tip .x { position: absolute; top: 4px; right: 4px; width: 26px; height: 26px; display: grid; place-items: center; border: 0; background: none; border-radius: 50%;
+  color: #6b6355; font: 18px/1 var(--font-type); cursor: pointer; pointer-events: auto; }
+.tip .x:hover, .tip .x:focus-visible { background: #0001; color: #1f1b16; }
+.tip .a { padding-right: 22px; }
 .tip .cv { float: right; width: 54px; margin: 0 0 4px 10px; border-radius: 2px; box-shadow: 0 2px 6px #0004; }
 .obj { position: relative; flex: none; align-self: flex-end; display: block; cursor: default; margin: 0 3px; }
 .obj svg { display: block; }
@@ -1027,7 +1031,7 @@ function show(el, x, y) {
   if (/inscription|handwrit/i.test(b.n)) flags.push(`<span class="flag inkf">${L("flagInk")}</span>`);
   const esc = s => (s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const cov = COVERS[b.id];
-  tip.innerHTML = `${cov ? `<img class="cv" src="${cov}" alt="">` : ""}<div class="a">${esc(b.a) || L("noAuthor")}</div>
+  tip.innerHTML = `<button class="x" type="button" aria-label="${LANG === "fr" ? "Fermer" : "Close"}">&times;</button>${cov ? `<img class="cv" src="${cov}" alt="">` : ""}<div class="a">${esc(b.a) || L("noAuthor")}</div>
     <div class="ti">${esc(b.t) || `<i>${L("noTitle")}</i>`}</div>
     ${b.p || b.k ? `<div class="p">${esc(b.p)}${b.k ? " · no. " + esc(b.k) : ""}</div>` : ""}
     ${el._sp && el._sp.name && el._sp.cls !== "generic" ? `<div class="ser">${esc(LANG === "fr" ? (SERIES_FR[el._sp.cls] || el._sp.name) : el._sp.name)}</div>` : ""}
@@ -1046,9 +1050,13 @@ function show(el, x, y) {
   if (top < 12) top = 12;
   tip.style.left = left + "px"; tip.style.top = top + "px";
 }
+function closeTip() { if (pinned) pinned.classList.remove("on"); pinned = null; tip.hidden = true; tip.classList.remove("pinned"); }
+let closedAt = null;  // after closing, ignore hover until the pointer actually moves away
+tip.addEventListener("click", e => { if (e.target.closest(".x")) { e.stopPropagation(); closeTip(); closedAt = [e.clientX, e.clientY]; } });
+const hoverOk = e => { if (!closedAt) return true; if (Math.hypot(e.clientX - closedAt[0], e.clientY - closedAt[1]) > 12) { closedAt = null; return true; } return false; };
 function hide() { if (!pinned) { tip.hidden = true; tip.classList.remove("pinned"); } }
-walls.addEventListener("mouseover", e => { const el = e.target.closest(".spine"); if (el && !pinned) show(el, e.clientX, e.clientY); });
-walls.addEventListener("mousemove", e => { const el = e.target.closest(".spine"); if (el && !pinned) show(el, e.clientX, e.clientY); });
+walls.addEventListener("mouseover", e => { const el = e.target.closest(".spine"); if (el && !pinned && hoverOk(e)) show(el, e.clientX, e.clientY); });
+walls.addEventListener("mousemove", e => { const el = e.target.closest(".spine"); if (el && !pinned && hoverOk(e)) show(el, e.clientX, e.clientY); });
 walls.addEventListener("mouseout", e => { if (e.target.closest(".spine")) hide(); });
 walls.addEventListener("click", e => {
   const el = e.target.closest(".spine");
@@ -1374,7 +1382,7 @@ addEventListener("hashchange", route);
   });
   const col = document.getElementById("v-collection");
   col.addEventListener("click", e => { const x = e.target.closest("[data-id]"); if (x) { tip.hidden = true; locate(x.dataset.id); } });
-  const over = e => { const x = e.target.closest("[data-id]"); if (!x) return; x._b = BOOKS[+x.dataset.id]; show(x, e.clientX, e.clientY); };
+  const over = e => { const x = e.target.closest("[data-id]"); if (!x || !hoverOk(e)) return; x._b = BOOKS[+x.dataset.id]; show(x, e.clientX, e.clientY); };
   col.addEventListener("mouseover", over); col.addEventListener("mousemove", over);
   col.addEventListener("mouseout", e => { if (e.target.closest("[data-id]")) tip.hidden = true; });
   col.addEventListener("focusin", e => { const x = e.target.closest("[data-id]"); if (x) { x._b = BOOKS[+x.dataset.id]; const r = x.getBoundingClientRect(); show(x, r.right, r.top); } });
