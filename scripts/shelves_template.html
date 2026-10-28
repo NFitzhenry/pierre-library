@@ -188,7 +188,7 @@ table.books td.loc { white-space: nowrap; font-family: var(--font-cond); }
 .card { position: relative; justify-self: start; width: min(100%, 680px); background: #f1ead9; color: #2a2620; border-radius: 3px; padding: 18px 26px 30px; box-shadow: 0 16px 30px -18px #000c, 0 1px 0 #fff8 inset;
   background-image: var(--noise), repeating-linear-gradient(to bottom, transparent 0 25px, #9db4c955 25px 26px); background-position: 0 0, 0 58px; display: grid; gap: 6px; }
 .card-rule { position: absolute; left: 0; right: 0; top: 46px; height: 1.5px; background: #c2473a; opacity: .8; }
-.card-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.card-row { display: flex; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
 .call { font-family: var(--font-type); font-size: .78rem; letter-spacing: .02em; color: #5b5346; }
 .card h1 { margin: 16px 0 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(1.7rem, 4vw, 2.2rem); letter-spacing: .06em; font-variant: small-caps; line-height: 1; color: #231f19; }
 .card .lede { font-family: var(--font-type); font-size: .82rem; line-height: 26px; color: #3d372e; margin: 2px 0 0; max-width: none; }
@@ -459,7 +459,7 @@ body { background: radial-gradient(140% 100% at 20% 0%, #40424a 0%, var(--wall) 
 // ---------- Language ----------
 const T = {
   en: {
-    title: "Pierre's library", stamp: "Inventory of 28 October 2026", searchLabel: "Search", search: "Author, title or series",
+    title: "Pierre's library", stamp: "", searchLabel: "Search", search: "Author, title or series",
     mark1: "Mark the", mark2: "books still to check", tabShelves: "Shelves", tabList: "List", tabAuthors: "Authors", tabFigures: "Figures", tabAbout: "About the collection",
     z0: "Whole wall", z1: "Closer", z2: "Full size", show: "Show",
     fAll: "All books", fCheck: "To check on the shelf", fInk: "With handwriting", fEd: "Edition identified (BnF)", fWork: "Work identified, edition not", fNone: "No BnF match",
@@ -481,7 +481,7 @@ const T = {
     decade: d => d ? d + "s" : "pre-1900",
   },
   fr: {
-    title: "La bibliothèque de Pierre", stamp: "Inventaire du 28 octobre 2026", searchLabel: "Rechercher", search: "Auteur, titre ou collection",
+    title: "La bibliothèque de Pierre", stamp: "", searchLabel: "Rechercher", search: "Auteur, titre ou collection",
     mark1: "Signaler les", mark2: "livres à vérifier", tabShelves: "Étagères", tabList: "Liste", tabAuthors: "Auteurs", tabFigures: "Chiffres", tabAbout: "Description de la collection",
     z0: "Tout le mur", z1: "Plus près", z2: "Taille réelle", show: "Afficher",
     fAll: "Tous les livres", fCheck: "À vérifier sur l'étagère", fInk: "Avec une inscription", fEd: "Édition identifiée (BnF)", fWork: "Œuvre identifiée, pas l'édition", fNone: "Non trouvé à la BnF",
